@@ -37,7 +37,7 @@ loadScripts(document, 'script');</script>
 <li>
 <p>Package:</p>
 <ul>
-<li>Description</li>
+<li><a href="#package-description">Description</a></li>
 <li><a href="#related-package-summary">Related Packages</a></li>
 <li><a href="#class-summary">Classes and Interfaces</a></li>
 </ul>
@@ -48,7 +48,7 @@ loadScripts(document, 'script');</script>
 <div id="navbar-sub-list">
 <ul class="sub-nav-list">
 <li>Package:&nbsp;</li>
-<li>Description&nbsp;|&nbsp;</li>
+<li><a href="#package-description">Description</a>&nbsp;|&nbsp;</li>
 <li><a href="#related-package-summary">Related Packages</a>&nbsp;|&nbsp;</li>
 <li><a href="#class-summary">Classes and Interfaces</a></li>
 </ul>
@@ -68,6 +68,28 @@ loadScripts(document, 'script');</script>
 </div>
 <hr>
 <div class="package-signature">package <span class="element-name">com.nandini.recipevault</span></div>
+<section class="package-description" id="package-description">
+<div class="block">Root package for the Recipe Vault application.
+
+ <p>This package serves as the entry point and central hub
+ for the application. It contains the main Spring Boot
+ application class and provides access to subpackages
+ that handle specific domains such as recipes, categories,
+ ingredients, configuration, and exception handling.
+
+ <p>Subpackages include:
+ <ul>
+   <li><a href="recipe/package-summary.html"><code>com.nandini.recipevault.recipe</code></a> - Recipe management</li>
+   <li><a href="category/package-summary.html"><code>com.nandini.recipevault.category</code></a> - Recipe categorization</li>
+   <li><a href="ingredient/package-summary.html"><code>com.nandini.recipevault.ingredient</code></a> - Ingredient management</li>
+   <li><a href="exception/package-summary.html"><code>com.nandini.recipevault.exception</code></a> - Exception handling</li>
+ </ul>
+
+ <p>Usage example:
+ <pre>
+ SpringApplication.run(RecipeVaultApplication.class, args);
+ </pre></div>
+</section>
 <section class="summary">
 <ul class="summary-list">
 <li>
@@ -82,7 +104,10 @@ loadScripts(document, 'script');</script>
  into categories within the Recipe Vault application.</div>
 </div>
 <div class="col-first odd-row-color"><a href="exception/package-summary.html">com.nandini.recipevault.exception</a></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Provides custom exception classes and handlers
+ for the Recipe Vault application.</div>
+</div>
 <div class="col-first even-row-color"><a href="ingredient/package-summary.html">com.nandini.recipevault.ingredient</a></div>
 <div class="col-last even-row-color">
 <div class="block">Provides classes and interfaces for managing ingredients
