@@ -7,7 +7,7 @@ Built with **Spring Boot 3**, **Gradle**, **MapStruct**, and **SpringDoc OpenAPI
 
 ## 📖 Documentation
 
-- Ingredient[./docs/com/nandini/recipevault/ingredient/Ingredient.html]
+- [Ingredient](./docs/com/nandini/recipevault/ingredient/Ingredient.html)
 
 ---
 
