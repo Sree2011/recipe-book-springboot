@@ -12,7 +12,6 @@
  *   <li>{@link com.nandini.recipevault.recipe} - Recipe management</li>
  *   <li>{@link com.nandini.recipevault.category} - Recipe categorization</li>
  *   <li>{@link com.nandini.recipevault.ingredient} - Ingredient management</li>
- *   <li>{@link com.nandini.recipevault.config} - Application configuration</li>
  *   <li>{@link com.nandini.recipevault.exception} - Exception handling</li>
  * </ul>
  *
