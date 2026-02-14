@@ -87,6 +87,27 @@ loadScripts(document, 'script');</script>
 <section class="class-description" id="class-description">
 <hr>
 <div class="type-signature"><span class="modifiers">public interface </span><span class="element-name type-name-label">CategoryMapper</span></div>
+<div class="block">Mapper interface for converting between <a href="Category.html" title="class in com.nandini.recipevault.category"><code>Category</code></a> entities
+ and <a href="CategoryDto.html" title="class in com.nandini.recipevault.category"><code>CategoryDto</code></a> objects.
+
+ <p>This mapper helps decouple the persistence layer from the API layer
+ by providing compile-time safe conversions using MapStruct.
+
+ <p>Responsibilities:
+ <ul>
+   <li>Convert <a href="Category.html" title="class in com.nandini.recipevault.category"><code>Category</code></a> to <a href="CategoryDto.html" title="class in com.nandini.recipevault.category"><code>CategoryDto</code></a></li>
+   <li>Convert <a href="CategoryDto.html" title="class in com.nandini.recipevault.category"><code>CategoryDto</code></a> to <a href="Category.html" title="class in com.nandini.recipevault.category"><code>Category</code></a></li>
+   <li>Handle collections of categories and DTOs</li>
+ </ul>
+ -----
+ Example usage:
+ <pre>
+ CategoryDto dto = categoryMapper.toDto(categoryEntity);
+ Category entity = categoryMapper.toEntity(dto);
+ </pre>
+
+ <p>Note: This interface is typically implemented automatically
+ by MapStruct at compile time.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
