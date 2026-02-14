@@ -1,3 +1,18 @@
+/**
+ * Represents a recipe category in the Recipe Vault application.
+ *
+ * <p>A category is used to group recipes logically
+ * (e.g., "Desserts", "Main Course", "Vegetarian").
+ *
+ * <p>Each category may contain multiple recipes.
+ *
+ * Example:
+ * <pre>
+ * Category dessert = new Category("Desserts");
+ * </pre>
+ */
+
+
 package com.nandini.recipevault.category;
 
 

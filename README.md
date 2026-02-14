@@ -9,8 +9,9 @@ Built with **Spring Boot 3**, **Gradle**, **MapStruct**, and **SpringDoc OpenAPI
 
 ### Overall Application  class
  - [SpringBootApplication](./docs/com/nandini/recipevault/RecipeVaultApplication.html)
-
+ 
 ### Packages
+  - [Root Package](./docs/com/nandini/recipevault/package-summary.html)
   - [Ingredient](./docs/com/nandini/recipevault/ingredient/package-summary.html)
   - [Recipe](./docs/com/nandini/recipevault/recipe/package-summary.html)
   - [Category](./docs/com/nandini/recipevault/category/package-summary.html)

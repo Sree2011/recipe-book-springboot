@@ -1,3 +1,14 @@
+/**
+ * Data Transfer Object (DTO) for {@link Category}.
+ *
+ * <p>Used to transfer category data between layers
+ * without exposing the entity directly.
+ *
+ * Example:
+ * <pre>
+ * CategoryDTO dto = new CategoryDTO("Desserts");
+ * </pre>
+ */
 package com.nandini.recipevault.category;
 
 public class CategoryDto {

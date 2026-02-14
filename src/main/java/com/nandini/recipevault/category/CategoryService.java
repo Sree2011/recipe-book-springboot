@@ -1,9 +1,22 @@
+/**
+ * Service layer for managing {@link Category} entities.
+ *
+ * <p>Encapsulates business logic related to categories,
+ * such as creating, updating, and retrieving categories.
+ *
+ * Example:
+ * <pre>
+ * categoryService.createCategory("Desserts");
+ * </pre>
+ */
 package com.nandini.recipevault.category;
 
 import com.nandini.recipevault.exception.CategoryNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CategoryService {
     private final CategoryRepository categoryRepository;
 
