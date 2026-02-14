@@ -12,7 +12,7 @@ public class IngredientService {
         this.ingredientRepository = ingredientRepository;
     }
 
-    public List<Ingredient> getAllCategories() {
+    public List<Ingredient> getAllIngredients() {
         return ingredientRepository.findAll();
     }
     public Ingredient getIngredientById(long id) {

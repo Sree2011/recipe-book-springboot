@@ -8,7 +8,7 @@ import java.util.*;
 
 @Entity
 public class Category {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
@@ -22,8 +22,6 @@ public class Category {
         this.id = id;
         this.name = name;
     }
-
-
 
     public Long getId() {
         return id;
