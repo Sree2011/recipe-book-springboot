@@ -1,5 +1,6 @@
 com.nandini.recipevault
 com.nandini.recipevault.category
+com.nandini.recipevault.config
 com.nandini.recipevault.exception
 com.nandini.recipevault.ingredient
 com.nandini.recipevault.recipe
