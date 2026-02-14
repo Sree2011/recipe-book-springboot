@@ -1,10 +1,17 @@
 package com.nandini.recipevault.ingredient;
 
-public class IngredientDto {
-    private String name;
-    private String quantity;
+import io.swagger.v3.oas.annotations.media.Schema;
 
-    public IngredientDto(String name, String quantity) {
+@Schema(description = "Schema representing an ingredient with name and quantity")
+public class IngredientDto {
+        @Schema(description = "Name of the ingredient", example = "Sugar")
+        private String name;
+
+        @Schema(description = "Quantity of the ingredient", example = "2 tbsp")
+        private String quantity;
+
+
+        public IngredientDto(String name, String quantity) {
         this.name = name;
         this.quantity = quantity;
     }

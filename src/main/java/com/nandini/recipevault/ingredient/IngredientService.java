@@ -1,10 +1,12 @@
 package com.nandini.recipevault.ingredient;
 
 import com.nandini.recipevault.exception.IngredientNotFoundException;
+import org.springframework.stereotype.Service;
 
 
 import java.util.List;
 
+@Service
 public class IngredientService {
     private final IngredientRepository ingredientRepository;
 
@@ -20,8 +22,8 @@ public class IngredientService {
                 .orElseThrow(() -> new IngredientNotFoundException(id));
     }
 
-    public Ingredient saveIngredient(Ingredient Ingredient) {
-        return ingredientRepository.save(Ingredient);
+    public Ingredient saveIngredient(Ingredient ingredient) {
+        return ingredientRepository.save(ingredient);
     }
 
     public void deleteIngredientById(long id) {

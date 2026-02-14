@@ -1,5 +1,7 @@
 package com.nandini.recipevault.category;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 /**
  * Data Transfer Object (DTO) for {@link Category}.
  *
@@ -8,11 +10,16 @@ package com.nandini.recipevault.category;
  * -----
  * Example:
  * <pre>
- * CategoryDTO dto = new CategoryDTO("Desserts");
+ * CategoryDto dto = new CategoryDto("Desserts", "10 recipes");
  * </pre>
  */
+@Schema(description = "DTO representing a recipe category with name and quantity")
 public class CategoryDto {
+
+    @Schema(description = "Name of the category", example = "Desserts")
     private String name;
+
+    @Schema(description = "Quantity or count associated with the category", example = "10 recipes")
     private String quantity;
 
     public CategoryDto(String name, String quantity) {

@@ -1,19 +1,30 @@
 package com.nandini.recipevault.recipe;
 
 import com.nandini.recipevault.ingredient.IngredientDto;
+import io.swagger.v3.oas.annotations.media.Schema;
 
-import java.time.LocalDateTime;
+
 import java.util.List;
 
+@Schema(description = "Schema representing a recipe with name, description, instructions, and ingredients")
 public class RecipeDto {
-    private Long id;
-    private String name;
-    private String description;
-    private String instructions;
-    private List<IngredientDto> ingredients;
-    private LocalDateTime createdAt;
 
-    public RecipeDto(String name, String description, String instructions, List<IngredientDto> ingredients) {
+        @Schema(description = "Name of the recipe", example = "Chocolate Cake")
+        private Long id;
+
+        @Schema(description = "Name of the recipe", example = "Chocolate Cake")
+        private String name;
+
+        @Schema(description = "Short description of the recipe", example = "A rich and moist chocolate cake")
+        private String description;
+
+        @Schema(description = "Step-by-step instructions to prepare the recipe", example = "Mix flour, sugar, cocoa...")
+        private String instructions;
+
+        @Schema(description = "List of ingredients required for the recipe")
+        private List<IngredientDto> ingredients;
+
+        public RecipeDto(String name, String description, String instructions, List<IngredientDto> ingredients) {
         this.name = name;
         this.description = description;
         this.instructions = instructions;
@@ -60,13 +71,7 @@ public class RecipeDto {
         this.ingredients = ingredients;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
 
     @Override
     public String toString() {
