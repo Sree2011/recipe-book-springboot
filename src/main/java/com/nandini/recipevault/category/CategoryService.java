@@ -1,3 +1,10 @@
+package com.nandini.recipevault.category;
+
+import com.nandini.recipevault.exception.CategoryNotFoundException;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
 /**
  * Service layer for managing {@link Category} entities.
  *
@@ -9,13 +16,6 @@
  * categoryService.createCategory("Desserts");
  * </pre>
  */
-package com.nandini.recipevault.category;
-
-import com.nandini.recipevault.exception.CategoryNotFoundException;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-
 @Service
 public class CategoryService {
     private final CategoryRepository categoryRepository;

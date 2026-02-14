@@ -1,3 +1,7 @@
+
+package com.nandini.recipevault.category;
+
+import org.springframework.data.jpa.repository.JpaRepository;
 /**
  * Repository interface for {@link Category} entities.
  *
@@ -9,9 +13,5 @@
  * categoryRepository.save(new Category("Desserts"));
  * </pre>
  */
-package com.nandini.recipevault.category;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-
 public interface CategoryRepository extends JpaRepository<Category, Long> {
 }

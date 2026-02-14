@@ -1,3 +1,5 @@
+package com.nandini.recipevault.category;
+
 /**
  * Data Transfer Object (DTO) for {@link Category}.
  *
@@ -9,9 +11,6 @@
  * CategoryDTO dto = new CategoryDTO("Desserts");
  * </pre>
  */
-
-package com.nandini.recipevault.category;
-
 public class CategoryDto {
     private String name;
     private String quantity;

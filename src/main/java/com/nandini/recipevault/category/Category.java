@@ -1,3 +1,13 @@
+package com.nandini.recipevault.category;
+
+
+import com.nandini.recipevault.recipe.Recipe;
+import jakarta.persistence.*;
+
+import java.util.*;
+
+
+
 /**
  * Represents a recipe category in the Recipe Vault application.
  *
@@ -11,16 +21,6 @@
  * Category dessert = new Category("Desserts");
  * </pre>
  */
-
-
-package com.nandini.recipevault.category;
-
-
-import com.nandini.recipevault.recipe.Recipe;
-import jakarta.persistence.*;
-
-import java.util.*;
-
 @Entity
 public class Category {
     
