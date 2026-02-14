@@ -7,8 +7,7 @@ Built with **Spring Boot 3**, **Gradle**, **MapStruct**, and **SpringDoc OpenAPI
 
 ## 📖 Documentation
 
-- [API Javadoc](/recipe-vault/docs/index.html)  
-- [Swagger UI](http://localhost:8080/swagger-ui.html) (local development)
+- Ingredient[./docs/com/nandini/recipevault/ingredient/Ingredient.html]
 
 ---
 
