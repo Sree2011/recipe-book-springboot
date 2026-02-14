@@ -5,7 +5,7 @@
  * (e.g., "Desserts", "Main Course", "Vegetarian").
  *
  * <p>Each category may contain multiple recipes.
- *
+ * ---
  * Example:
  * <pre>
  * Category dessert = new Category("Desserts");

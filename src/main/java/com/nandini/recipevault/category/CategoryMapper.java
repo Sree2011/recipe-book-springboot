@@ -11,7 +11,7 @@
  *   <li>Convert {@link CategoryDTO} to {@link Category}</li>
  *   <li>Handle collections of categories and DTOs</li>
  * </ul>
- *
+ * -----
  * Example usage:
  * <pre>
  * CategoryDTO dto = categoryMapper.toDto(categoryEntity);

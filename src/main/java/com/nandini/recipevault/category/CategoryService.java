@@ -3,7 +3,7 @@
  *
  * <p>Encapsulates business logic related to categories,
  * such as creating, updating, and retrieving categories.
- *
+ * -------
  * Example:
  * <pre>
  * categoryService.createCategory("Desserts");

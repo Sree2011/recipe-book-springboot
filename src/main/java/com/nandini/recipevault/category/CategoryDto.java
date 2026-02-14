@@ -3,7 +3,7 @@
  *
  * <p>Used to transfer category data between layers
  * without exposing the entity directly.
- *
+ * -----
  * Example:
  * <pre>
  * CategoryDTO dto = new CategoryDTO("Desserts");

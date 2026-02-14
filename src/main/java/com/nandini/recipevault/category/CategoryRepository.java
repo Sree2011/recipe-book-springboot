@@ -3,7 +3,7 @@
  *
  * <p>Provides CRUD operations and query methods
  * for interacting with the database.
-
+ * ------
  * Example:
  * <pre>
  * categoryRepository.save(new Category("Desserts"));
