@@ -4,7 +4,7 @@ A Spring Boot REST API for managing recipes, ingredients, and categories.
 Built with **Spring Boot 3**, **Gradle**, **MapStruct**, and **SpringDoc OpenAPI**.
 
 ---
-
+### Badges:
 [![SonarQube Cloud](https://sonarcloud.io/images/project_badges/sonarcloud-highlight.svg)](https://sonarcloud.io/summary/new_code?id=com.nandini%3Arecipevault)
 [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=com.nandini%3Arecipevault&token=052952e7b9c5d2225aebba1cd7c7b7816e8f78b8)](https://sonarcloud.io/summary/new_code?id=com.nandini%3Arecipevault)
 
