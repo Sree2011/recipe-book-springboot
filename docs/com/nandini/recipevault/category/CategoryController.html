@@ -104,7 +104,8 @@ loadScripts(document, 'script');</script>
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(com.nandini.recipevault.category.CategoryService)" class="member-name-link">CategoryController</a><wbr>(<a href="CategoryService.html" title="class in com.nandini.recipevault.category">CategoryService</a>&nbsp;categoryService)</code></div>
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(com.nandini.recipevault.category.CategoryService,com.nandini.recipevault.category.CategoryMapper)" class="member-name-link">CategoryController</a><wbr>(<a href="CategoryService.html" title="class in com.nandini.recipevault.category">CategoryService</a>&nbsp;categoryService,
+ <a href="CategoryMapper.html" title="interface in com.nandini.recipevault.category">CategoryMapper</a>&nbsp;categoryMapper)</code></div>
 <div class="col-last even-row-color">&nbsp;</div>
 </div>
 </section>
@@ -120,21 +121,21 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity<wbr>&lt;<a href="Category.html" title="class in com.nandini.recipevault.category">Category</a>&gt;</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#createCategory(com.nandini.recipevault.category.Category)" class="member-name-link">createCategory</a><wbr>(<a href="Category.html" title="class in com.nandini.recipevault.category">Category</a>&nbsp;category)</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity<wbr>&lt;<a href="CategoryDto.html" title="class in com.nandini.recipevault.category">CategoryDto</a>&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#createCategory(com.nandini.recipevault.category.CategoryDto)" class="member-name-link">createCategory</a><wbr>(<a href="CategoryDto.html" title="class in com.nandini.recipevault.category">CategoryDto</a>&nbsp;categoryDto)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity<wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#deleteCategory(long)" class="member-name-link">deleteCategory</a><wbr>(long&nbsp;id)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity<wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Category.html" title="class in com.nandini.recipevault.category">Category</a>&gt;&gt;</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity<wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="CategoryDto.html" title="class in com.nandini.recipevault.category">CategoryDto</a>&gt;&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAllCategories()" class="member-name-link">getAllCategories</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity<wbr>&lt;<a href="Category.html" title="class in com.nandini.recipevault.category">Category</a>&gt;</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity<wbr>&lt;<a href="CategoryDto.html" title="class in com.nandini.recipevault.category">CategoryDto</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getCategoryById(long)" class="member-name-link">getCategoryById</a><wbr>(long&nbsp;id)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity<wbr>&lt;<a href="Category.html" title="class in com.nandini.recipevault.category">Category</a>&gt;</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updateCategory(long,com.nandini.recipevault.category.Category)" class="member-name-link">updateCategory</a><wbr>(long&nbsp;id,
- <a href="Category.html" title="class in com.nandini.recipevault.category">Category</a>&nbsp;category)</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity<wbr>&lt;<a href="CategoryDto.html" title="class in com.nandini.recipevault.category">CategoryDto</a>&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updateCategory(long,com.nandini.recipevault.category.CategoryDto)" class="member-name-link">updateCategory</a><wbr>(long&nbsp;id,
+ <a href="CategoryDto.html" title="class in com.nandini.recipevault.category">CategoryDto</a>&nbsp;categoryDto)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 </div>
 </div>
@@ -154,9 +155,10 @@ loadScripts(document, 'script');</script>
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(com.nandini.recipevault.category.CategoryService)">
+<section class="detail" id="&lt;init&gt;(com.nandini.recipevault.category.CategoryService,com.nandini.recipevault.category.CategoryMapper)">
 <h3>CategoryController</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">CategoryController</span><wbr><span class="parameters">(<a href="CategoryService.html" title="class in com.nandini.recipevault.category">CategoryService</a>&nbsp;categoryService)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">CategoryController</span><wbr><span class="parameters">(<a href="CategoryService.html" title="class in com.nandini.recipevault.category">CategoryService</a>&nbsp;categoryService,
+ <a href="CategoryMapper.html" title="interface in com.nandini.recipevault.category">CategoryMapper</a>&nbsp;categoryMapper)</span></div>
 </section>
 </li>
 </ul>
@@ -171,7 +173,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getAllCategories()">
 <h3>getAllCategories</h3>
 <div class="member-signature"><span class="annotations">@GetMapping(produces="application/json")
-</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Category.html" title="class in com.nandini.recipevault.category">Category</a>&gt;&gt;</span>&nbsp;<span class="element-name">getAllCategories</span>()</div>
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="CategoryDto.html" title="class in com.nandini.recipevault.category">CategoryDto</a>&gt;&gt;</span>&nbsp;<span class="element-name">getAllCategories</span>()</div>
 </section>
 </li>
 <li>
@@ -179,27 +181,27 @@ loadScripts(document, 'script');</script>
 <h3>getCategoryById</h3>
 <div class="member-signature"><span class="annotations">@GetMapping(value="/{id}",
             produces="application/json")
-</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="Category.html" title="class in com.nandini.recipevault.category">Category</a>&gt;</span>&nbsp;<span class="element-name">getCategoryById</span><wbr><span class="parameters">(@PathVariable
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="CategoryDto.html" title="class in com.nandini.recipevault.category">CategoryDto</a>&gt;</span>&nbsp;<span class="element-name">getCategoryById</span><wbr><span class="parameters">(@PathVariable
  long&nbsp;id)</span></div>
 </section>
 </li>
 <li>
-<section class="detail" id="createCategory(com.nandini.recipevault.category.Category)">
+<section class="detail" id="createCategory(com.nandini.recipevault.category.CategoryDto)">
 <h3>createCategory</h3>
 <div class="member-signature"><span class="annotations">@PostMapping(produces="application/json")
-</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="Category.html" title="class in com.nandini.recipevault.category">Category</a>&gt;</span>&nbsp;<span class="element-name">createCategory</span><wbr><span class="parameters">(@RequestBody
- <a href="Category.html" title="class in com.nandini.recipevault.category">Category</a>&nbsp;category)</span></div>
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="CategoryDto.html" title="class in com.nandini.recipevault.category">CategoryDto</a>&gt;</span>&nbsp;<span class="element-name">createCategory</span><wbr><span class="parameters">(@RequestBody
+ <a href="CategoryDto.html" title="class in com.nandini.recipevault.category">CategoryDto</a>&nbsp;categoryDto)</span></div>
 </section>
 </li>
 <li>
-<section class="detail" id="updateCategory(long,com.nandini.recipevault.category.Category)">
+<section class="detail" id="updateCategory(long,com.nandini.recipevault.category.CategoryDto)">
 <h3>updateCategory</h3>
 <div class="member-signature"><span class="annotations">@PutMapping(value="/{id}",
             produces="application/json")
-</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="Category.html" title="class in com.nandini.recipevault.category">Category</a>&gt;</span>&nbsp;<span class="element-name">updateCategory</span><wbr><span class="parameters">(@PathVariable
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="CategoryDto.html" title="class in com.nandini.recipevault.category">CategoryDto</a>&gt;</span>&nbsp;<span class="element-name">updateCategory</span><wbr><span class="parameters">(@PathVariable
  long&nbsp;id,
  @RequestBody
- <a href="Category.html" title="class in com.nandini.recipevault.category">Category</a>&nbsp;category)</span></div>
+ <a href="CategoryDto.html" title="class in com.nandini.recipevault.category">CategoryDto</a>&nbsp;categoryDto)</span></div>
 </section>
 </li>
 <li>

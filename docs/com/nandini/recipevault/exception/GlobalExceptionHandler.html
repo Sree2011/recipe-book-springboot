@@ -123,13 +123,17 @@ loadScripts(document, 'script');</script>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#handleBadRequest(java.lang.IllegalArgumentException,org.springframework.web.context.request.WebRequest)" class="member-name-link">handleBadRequest</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/IllegalArgumentException.html" title="class or interface in java.lang" class="external-link">IllegalArgumentException</a>&nbsp;ex,
  org.springframework.web.context.request.WebRequest&nbsp;request)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity<wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&gt;</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#handleException(java.lang.Exception,org.springframework.web.context.request.WebRequest)" class="member-name-link">handleException</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Exception.html" title="class or interface in java.lang" class="external-link">Exception</a>&nbsp;ex,
- org.springframework.web.context.request.WebRequest&nbsp;request)</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity<wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#handleCategoryNotFound(com.nandini.recipevault.exception.CategoryNotFoundException)" class="member-name-link">handleCategoryNotFound</a><wbr>(<a href="CategoryNotFoundException.html" title="class in com.nandini.recipevault.exception">CategoryNotFoundException</a>&nbsp;ex)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity<wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&gt;</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#handleRecipeNotFound(com.nandini.recipevault.exception.RecipeNotFoundException,org.springframework.web.context.request.WebRequest)" class="member-name-link">handleRecipeNotFound</a><wbr>(<a href="RecipeNotFoundException.html" title="class in com.nandini.recipevault.exception">RecipeNotFoundException</a>&nbsp;ex,
- org.springframework.web.context.request.WebRequest&nbsp;request)</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity<wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#handleException(java.lang.Exception)" class="member-name-link">handleException</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Exception.html" title="class or interface in java.lang" class="external-link">Exception</a>&nbsp;ex)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity<wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#handleIngredientNotFound(com.nandini.recipevault.exception.IngredientNotFoundException)" class="member-name-link">handleIngredientNotFound</a><wbr>(<a href="IngredientNotFoundException.html" title="class in com.nandini.recipevault.exception">IngredientNotFoundException</a>&nbsp;ex)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity<wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#handleRecipeNotFound(com.nandini.recipevault.exception.RecipeNotFoundException)" class="member-name-link">handleRecipeNotFound</a><wbr>(<a href="RecipeNotFoundException.html" title="class in com.nandini.recipevault.exception">RecipeNotFoundException</a>&nbsp;ex)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 </div>
 </div>
@@ -163,19 +167,31 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="handleException(java.lang.Exception,org.springframework.web.context.request.WebRequest)">
+<section class="detail" id="handleException(java.lang.Exception)">
 <h3>handleException</h3>
 <div class="member-signature"><span class="annotations">@ExceptionHandler(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Exception.html" title="class or interface in java.lang" class="external-link">java.lang.Exception.class</a>)
-</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&gt;</span>&nbsp;<span class="element-name">handleException</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Exception.html" title="class or interface in java.lang" class="external-link">Exception</a>&nbsp;ex,
- org.springframework.web.context.request.WebRequest&nbsp;request)</span></div>
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name">handleException</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Exception.html" title="class or interface in java.lang" class="external-link">Exception</a>&nbsp;ex)</span></div>
 </section>
 </li>
 <li>
-<section class="detail" id="handleRecipeNotFound(com.nandini.recipevault.exception.RecipeNotFoundException,org.springframework.web.context.request.WebRequest)">
+<section class="detail" id="handleRecipeNotFound(com.nandini.recipevault.exception.RecipeNotFoundException)">
 <h3>handleRecipeNotFound</h3>
 <div class="member-signature"><span class="annotations">@ExceptionHandler(<a href="RecipeNotFoundException.html" title="class in com.nandini.recipevault.exception">RecipeNotFoundException.class</a>)
-</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&gt;</span>&nbsp;<span class="element-name">handleRecipeNotFound</span><wbr><span class="parameters">(<a href="RecipeNotFoundException.html" title="class in com.nandini.recipevault.exception">RecipeNotFoundException</a>&nbsp;ex,
- org.springframework.web.context.request.WebRequest&nbsp;request)</span></div>
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name">handleRecipeNotFound</span><wbr><span class="parameters">(<a href="RecipeNotFoundException.html" title="class in com.nandini.recipevault.exception">RecipeNotFoundException</a>&nbsp;ex)</span></div>
+</section>
+</li>
+<li>
+<section class="detail" id="handleIngredientNotFound(com.nandini.recipevault.exception.IngredientNotFoundException)">
+<h3>handleIngredientNotFound</h3>
+<div class="member-signature"><span class="annotations">@ExceptionHandler(<a href="IngredientNotFoundException.html" title="class in com.nandini.recipevault.exception">IngredientNotFoundException.class</a>)
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name">handleIngredientNotFound</span><wbr><span class="parameters">(<a href="IngredientNotFoundException.html" title="class in com.nandini.recipevault.exception">IngredientNotFoundException</a>&nbsp;ex)</span></div>
+</section>
+</li>
+<li>
+<section class="detail" id="handleCategoryNotFound(com.nandini.recipevault.exception.CategoryNotFoundException)">
+<h3>handleCategoryNotFound</h3>
+<div class="member-signature"><span class="annotations">@ExceptionHandler(<a href="CategoryNotFoundException.html" title="class in com.nandini.recipevault.exception">CategoryNotFoundException.class</a>)
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name">handleCategoryNotFound</span><wbr><span class="parameters">(<a href="CategoryNotFoundException.html" title="class in com.nandini.recipevault.exception">CategoryNotFoundException</a>&nbsp;ex)</span></div>
 </section>
 </li>
 <li>

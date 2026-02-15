@@ -56,6 +56,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Represents a recipe category in the Recipe Vault application.</div>
 </dd>
+<dt><a href="com/nandini/recipevault/category/Category.html#%3Cinit%3E()" class="member-name-link">Category()</a> - Constructor for class com.nandini.recipevault.category.<a href="com/nandini/recipevault/category/Category.html" title="class in com.nandini.recipevault.category">Category</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="com/nandini/recipevault/category/Category.html#%3Cinit%3E(java.lang.Long,java.lang.String)" class="member-name-link">Category(Long, String)</a> - Constructor for class com.nandini.recipevault.category.<a href="com/nandini/recipevault/category/Category.html" title="class in com.nandini.recipevault.category">Category</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/nandini/recipevault/config/Constants.html#CATEGORY204" class="member-name-link">CATEGORY204</a> - Static variable in class com.nandini.recipevault.config.<a href="com/nandini/recipevault/config/Constants.html" title="class in com.nandini.recipevault.config">Constants</a></dt>
@@ -64,13 +66,15 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="com/nandini/recipevault/category/CategoryController.html" class="type-name-link" title="class in com.nandini.recipevault.category">CategoryController</a> - Class in <a href="com/nandini/recipevault/category/package-summary.html">com.nandini.recipevault.category</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="com/nandini/recipevault/category/CategoryController.html#%3Cinit%3E(com.nandini.recipevault.category.CategoryService)" class="member-name-link">CategoryController(CategoryService)</a> - Constructor for class com.nandini.recipevault.category.<a href="com/nandini/recipevault/category/CategoryController.html" title="class in com.nandini.recipevault.category">CategoryController</a></dt>
+<dt><a href="com/nandini/recipevault/category/CategoryController.html#%3Cinit%3E(com.nandini.recipevault.category.CategoryService,com.nandini.recipevault.category.CategoryMapper)" class="member-name-link">CategoryController(CategoryService, CategoryMapper)</a> - Constructor for class com.nandini.recipevault.category.<a href="com/nandini/recipevault/category/CategoryController.html" title="class in com.nandini.recipevault.category">CategoryController</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/nandini/recipevault/category/CategoryDto.html" class="type-name-link" title="class in com.nandini.recipevault.category">CategoryDto</a> - Class in <a href="com/nandini/recipevault/category/package-summary.html">com.nandini.recipevault.category</a></dt>
 <dd>
 <div class="block">Data Transfer Object (DTO) for <a href="com/nandini/recipevault/category/Category.html" title="class in com.nandini.recipevault.category"><code>Category</code></a>.</div>
 </dd>
-<dt><a href="com/nandini/recipevault/category/CategoryDto.html#%3Cinit%3E(java.lang.String,java.lang.String)" class="member-name-link">CategoryDto(String, String)</a> - Constructor for class com.nandini.recipevault.category.<a href="com/nandini/recipevault/category/CategoryDto.html" title="class in com.nandini.recipevault.category">CategoryDto</a></dt>
+<dt><a href="com/nandini/recipevault/category/CategoryDto.html#%3Cinit%3E()" class="member-name-link">CategoryDto()</a> - Constructor for class com.nandini.recipevault.category.<a href="com/nandini/recipevault/category/CategoryDto.html" title="class in com.nandini.recipevault.category">CategoryDto</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/nandini/recipevault/category/CategoryDto.html#%3Cinit%3E(java.lang.String)" class="member-name-link">CategoryDto(String)</a> - Constructor for class com.nandini.recipevault.category.<a href="com/nandini/recipevault/category/CategoryDto.html" title="class in com.nandini.recipevault.category">CategoryDto</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/nandini/recipevault/category/CategoryMapper.html" class="type-name-link" title="interface in com.nandini.recipevault.category">CategoryMapper</a> - Interface in <a href="com/nandini/recipevault/category/package-summary.html">com.nandini.recipevault.category</a></dt>
 <dd>
@@ -119,7 +123,7 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="com/nandini/recipevault/config/Constants.html" class="type-name-link" title="class in com.nandini.recipevault.config">Constants</a> - Class in <a href="com/nandini/recipevault/config/package-summary.html">com.nandini.recipevault.config</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="com/nandini/recipevault/category/CategoryController.html#createCategory(com.nandini.recipevault.category.Category)" class="member-name-link">createCategory(Category)</a> - Method in class com.nandini.recipevault.category.<a href="com/nandini/recipevault/category/CategoryController.html" title="class in com.nandini.recipevault.category">CategoryController</a></dt>
+<dt><a href="com/nandini/recipevault/category/CategoryController.html#createCategory(com.nandini.recipevault.category.CategoryDto)" class="member-name-link">createCategory(CategoryDto)</a> - Method in class com.nandini.recipevault.category.<a href="com/nandini/recipevault/category/CategoryController.html" title="class in com.nandini.recipevault.category">CategoryController</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/nandini/recipevault/ingredient/IngredientController.html#createIngredient(com.nandini.recipevault.ingredient.IngredientDto)" class="member-name-link">createIngredient(IngredientDto)</a> - Method in class com.nandini.recipevault.ingredient.<a href="com/nandini/recipevault/ingredient/IngredientController.html" title="class in com.nandini.recipevault.ingredient">IngredientController</a></dt>
 <dd>&nbsp;</dd>
@@ -174,7 +178,11 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="com/nandini/recipevault/category/Category.html#getId()" class="member-name-link">getId()</a> - Method in class com.nandini.recipevault.category.<a href="com/nandini/recipevault/category/Category.html" title="class in com.nandini.recipevault.category">Category</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="com/nandini/recipevault/category/CategoryDto.html#getId()" class="member-name-link">getId()</a> - Method in class com.nandini.recipevault.category.<a href="com/nandini/recipevault/category/CategoryDto.html" title="class in com.nandini.recipevault.category">CategoryDto</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="com/nandini/recipevault/ingredient/Ingredient.html#getId()" class="member-name-link">getId()</a> - Method in class com.nandini.recipevault.ingredient.<a href="com/nandini/recipevault/ingredient/Ingredient.html" title="class in com.nandini.recipevault.ingredient">Ingredient</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/nandini/recipevault/ingredient/IngredientDto.html#getId()" class="member-name-link">getId()</a> - Method in class com.nandini.recipevault.ingredient.<a href="com/nandini/recipevault/ingredient/IngredientDto.html" title="class in com.nandini.recipevault.ingredient">IngredientDto</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/nandini/recipevault/recipe/Recipe.html#getId()" class="member-name-link">getId()</a> - Method in class com.nandini.recipevault.recipe.<a href="com/nandini/recipevault/recipe/Recipe.html" title="class in com.nandini.recipevault.recipe">Recipe</a></dt>
 <dd>&nbsp;</dd>
@@ -202,8 +210,6 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="com/nandini/recipevault/recipe/RecipeDto.html#getName()" class="member-name-link">getName()</a> - Method in class com.nandini.recipevault.recipe.<a href="com/nandini/recipevault/recipe/RecipeDto.html" title="class in com.nandini.recipevault.recipe">RecipeDto</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="com/nandini/recipevault/category/CategoryDto.html#getQuantity()" class="member-name-link">getQuantity()</a> - Method in class com.nandini.recipevault.category.<a href="com/nandini/recipevault/category/CategoryDto.html" title="class in com.nandini.recipevault.category">CategoryDto</a></dt>
-<dd>&nbsp;</dd>
 <dt><a href="com/nandini/recipevault/ingredient/Ingredient.html#getQuantity()" class="member-name-link">getQuantity()</a> - Method in class com.nandini.recipevault.ingredient.<a href="com/nandini/recipevault/ingredient/Ingredient.html" title="class in com.nandini.recipevault.ingredient">Ingredient</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/nandini/recipevault/ingredient/IngredientDto.html#getQuantity()" class="member-name-link">getQuantity()</a> - Method in class com.nandini.recipevault.ingredient.<a href="com/nandini/recipevault/ingredient/IngredientDto.html" title="class in com.nandini.recipevault.ingredient">IngredientDto</a></dt>
@@ -221,9 +227,13 @@ loadScripts(document, 'script');</script>
 <dl class="index">
 <dt><a href="com/nandini/recipevault/exception/GlobalExceptionHandler.html#handleBadRequest(java.lang.IllegalArgumentException,org.springframework.web.context.request.WebRequest)" class="member-name-link">handleBadRequest(IllegalArgumentException, WebRequest)</a> - Method in class com.nandini.recipevault.exception.<a href="com/nandini/recipevault/exception/GlobalExceptionHandler.html" title="class in com.nandini.recipevault.exception">GlobalExceptionHandler</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="com/nandini/recipevault/exception/GlobalExceptionHandler.html#handleException(java.lang.Exception,org.springframework.web.context.request.WebRequest)" class="member-name-link">handleException(Exception, WebRequest)</a> - Method in class com.nandini.recipevault.exception.<a href="com/nandini/recipevault/exception/GlobalExceptionHandler.html" title="class in com.nandini.recipevault.exception">GlobalExceptionHandler</a></dt>
+<dt><a href="com/nandini/recipevault/exception/GlobalExceptionHandler.html#handleCategoryNotFound(com.nandini.recipevault.exception.CategoryNotFoundException)" class="member-name-link">handleCategoryNotFound(CategoryNotFoundException)</a> - Method in class com.nandini.recipevault.exception.<a href="com/nandini/recipevault/exception/GlobalExceptionHandler.html" title="class in com.nandini.recipevault.exception">GlobalExceptionHandler</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="com/nandini/recipevault/exception/GlobalExceptionHandler.html#handleRecipeNotFound(com.nandini.recipevault.exception.RecipeNotFoundException,org.springframework.web.context.request.WebRequest)" class="member-name-link">handleRecipeNotFound(RecipeNotFoundException, WebRequest)</a> - Method in class com.nandini.recipevault.exception.<a href="com/nandini/recipevault/exception/GlobalExceptionHandler.html" title="class in com.nandini.recipevault.exception">GlobalExceptionHandler</a></dt>
+<dt><a href="com/nandini/recipevault/exception/GlobalExceptionHandler.html#handleException(java.lang.Exception)" class="member-name-link">handleException(Exception)</a> - Method in class com.nandini.recipevault.exception.<a href="com/nandini/recipevault/exception/GlobalExceptionHandler.html" title="class in com.nandini.recipevault.exception">GlobalExceptionHandler</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/nandini/recipevault/exception/GlobalExceptionHandler.html#handleIngredientNotFound(com.nandini.recipevault.exception.IngredientNotFoundException)" class="member-name-link">handleIngredientNotFound(IngredientNotFoundException)</a> - Method in class com.nandini.recipevault.exception.<a href="com/nandini/recipevault/exception/GlobalExceptionHandler.html" title="class in com.nandini.recipevault.exception">GlobalExceptionHandler</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/nandini/recipevault/exception/GlobalExceptionHandler.html#handleRecipeNotFound(com.nandini.recipevault.exception.RecipeNotFoundException)" class="member-name-link">handleRecipeNotFound(RecipeNotFoundException)</a> - Method in class com.nandini.recipevault.exception.<a href="com/nandini/recipevault/exception/GlobalExceptionHandler.html" title="class in com.nandini.recipevault.exception">GlobalExceptionHandler</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:I">I</h2>
@@ -243,6 +253,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="com/nandini/recipevault/ingredient/IngredientController.html#%3Cinit%3E(com.nandini.recipevault.ingredient.IngredientService,com.nandini.recipevault.ingredient.IngredientMapper)" class="member-name-link">IngredientController(IngredientService, IngredientMapper)</a> - Constructor for class com.nandini.recipevault.ingredient.<a href="com/nandini/recipevault/ingredient/IngredientController.html" title="class in com.nandini.recipevault.ingredient">IngredientController</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/nandini/recipevault/ingredient/IngredientDto.html" class="type-name-link" title="class in com.nandini.recipevault.ingredient">IngredientDto</a> - Class in <a href="com/nandini/recipevault/ingredient/package-summary.html">com.nandini.recipevault.ingredient</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/nandini/recipevault/ingredient/IngredientDto.html#%3Cinit%3E()" class="member-name-link">IngredientDto()</a> - Constructor for class com.nandini.recipevault.ingredient.<a href="com/nandini/recipevault/ingredient/IngredientDto.html" title="class in com.nandini.recipevault.ingredient">IngredientDto</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/nandini/recipevault/ingredient/IngredientDto.html#%3Cinit%3E(java.lang.Long,java.lang.String,java.lang.String)" class="member-name-link">IngredientDto(Long, String, String)</a> - Constructor for class com.nandini.recipevault.ingredient.<a href="com/nandini/recipevault/ingredient/IngredientDto.html" title="class in com.nandini.recipevault.ingredient">IngredientDto</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/nandini/recipevault/ingredient/IngredientDto.html#%3Cinit%3E(java.lang.String,java.lang.String)" class="member-name-link">IngredientDto(String, String)</a> - Constructor for class com.nandini.recipevault.ingredient.<a href="com/nandini/recipevault/ingredient/IngredientDto.html" title="class in com.nandini.recipevault.ingredient">IngredientDto</a></dt>
 <dd>&nbsp;</dd>
@@ -268,6 +282,10 @@ loadScripts(document, 'script');</script>
 <dl class="index">
 <dt><a href="com/nandini/recipevault/recipe/Recipe.html#onCreate()" class="member-name-link">onCreate()</a> - Method in class com.nandini.recipevault.recipe.<a href="com/nandini/recipevault/recipe/Recipe.html" title="class in com.nandini.recipevault.recipe">Recipe</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="com/nandini/recipevault/config/OpenApiConfig.html" class="type-name-link" title="class in com.nandini.recipevault.config">OpenApiConfig</a> - Class in <a href="com/nandini/recipevault/config/package-summary.html">com.nandini.recipevault.config</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/nandini/recipevault/config/OpenApiConfig.html#%3Cinit%3E()" class="member-name-link">OpenApiConfig()</a> - Constructor for class com.nandini.recipevault.config.<a href="com/nandini/recipevault/config/OpenApiConfig.html" title="class in com.nandini.recipevault.config">OpenApiConfig</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:R">R</h2>
 <dl class="index">
@@ -289,6 +307,8 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="com/nandini/recipevault/recipe/RecipeDto.html" class="type-name-link" title="class in com.nandini.recipevault.recipe">RecipeDto</a> - Class in <a href="com/nandini/recipevault/recipe/package-summary.html">com.nandini.recipevault.recipe</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="com/nandini/recipevault/recipe/RecipeDto.html#%3Cinit%3E()" class="member-name-link">RecipeDto()</a> - Constructor for class com.nandini.recipevault.recipe.<a href="com/nandini/recipevault/recipe/RecipeDto.html" title="class in com.nandini.recipevault.recipe">RecipeDto</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="com/nandini/recipevault/recipe/RecipeDto.html#%3Cinit%3E(java.lang.String,java.lang.String,java.lang.String,java.util.List)" class="member-name-link">RecipeDto(String, String, String, List&lt;IngredientDto&gt;)</a> - Constructor for class com.nandini.recipevault.recipe.<a href="com/nandini/recipevault/recipe/RecipeDto.html" title="class in com.nandini.recipevault.recipe">RecipeDto</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/nandini/recipevault/recipe/RecipeMapper.html" class="type-name-link" title="interface in com.nandini.recipevault.recipe">RecipeMapper</a> - Interface in <a href="com/nandini/recipevault/recipe/package-summary.html">com.nandini.recipevault.recipe</a></dt>
@@ -307,6 +327,8 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="com/nandini/recipevault/RecipeVaultApplication.html#%3Cinit%3E()" class="member-name-link">RecipeVaultApplication()</a> - Constructor for class com.nandini.recipevault.<a href="com/nandini/recipevault/RecipeVaultApplication.html" title="class in com.nandini.recipevault">RecipeVaultApplication</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="com/nandini/recipevault/config/OpenApiConfig.html#recipeVaultOpenAPI()" class="member-name-link">recipeVaultOpenAPI()</a> - Method in class com.nandini.recipevault.config.<a href="com/nandini/recipevault/config/OpenApiConfig.html" title="class in com.nandini.recipevault.config">OpenApiConfig</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:S">S</h2>
 <dl class="index">
@@ -324,7 +346,11 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="com/nandini/recipevault/category/Category.html#setId(java.lang.Long)" class="member-name-link">setId(Long)</a> - Method in class com.nandini.recipevault.category.<a href="com/nandini/recipevault/category/Category.html" title="class in com.nandini.recipevault.category">Category</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="com/nandini/recipevault/category/CategoryDto.html#setId(java.lang.Long)" class="member-name-link">setId(Long)</a> - Method in class com.nandini.recipevault.category.<a href="com/nandini/recipevault/category/CategoryDto.html" title="class in com.nandini.recipevault.category">CategoryDto</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="com/nandini/recipevault/ingredient/Ingredient.html#setId(java.lang.Long)" class="member-name-link">setId(Long)</a> - Method in class com.nandini.recipevault.ingredient.<a href="com/nandini/recipevault/ingredient/Ingredient.html" title="class in com.nandini.recipevault.ingredient">Ingredient</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/nandini/recipevault/ingredient/IngredientDto.html#setId(java.lang.Long)" class="member-name-link">setId(Long)</a> - Method in class com.nandini.recipevault.ingredient.<a href="com/nandini/recipevault/ingredient/IngredientDto.html" title="class in com.nandini.recipevault.ingredient">IngredientDto</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/nandini/recipevault/recipe/Recipe.html#setId(java.lang.Long)" class="member-name-link">setId(Long)</a> - Method in class com.nandini.recipevault.recipe.<a href="com/nandini/recipevault/recipe/Recipe.html" title="class in com.nandini.recipevault.recipe">Recipe</a></dt>
 <dd>&nbsp;</dd>
@@ -347,8 +373,6 @@ loadScripts(document, 'script');</script>
 <dt><a href="com/nandini/recipevault/recipe/Recipe.html#setName(java.lang.String)" class="member-name-link">setName(String)</a> - Method in class com.nandini.recipevault.recipe.<a href="com/nandini/recipevault/recipe/Recipe.html" title="class in com.nandini.recipevault.recipe">Recipe</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/nandini/recipevault/recipe/RecipeDto.html#setName(java.lang.String)" class="member-name-link">setName(String)</a> - Method in class com.nandini.recipevault.recipe.<a href="com/nandini/recipevault/recipe/RecipeDto.html" title="class in com.nandini.recipevault.recipe">RecipeDto</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="com/nandini/recipevault/category/CategoryDto.html#setQuantity(java.lang.String)" class="member-name-link">setQuantity(String)</a> - Method in class com.nandini.recipevault.category.<a href="com/nandini/recipevault/category/CategoryDto.html" title="class in com.nandini.recipevault.category">CategoryDto</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/nandini/recipevault/ingredient/Ingredient.html#setQuantity(java.lang.String)" class="member-name-link">setQuantity(String)</a> - Method in class com.nandini.recipevault.ingredient.<a href="com/nandini/recipevault/ingredient/Ingredient.html" title="class in com.nandini.recipevault.ingredient">Ingredient</a></dt>
 <dd>&nbsp;</dd>
@@ -396,7 +420,7 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:U">U</h2>
 <dl class="index">
-<dt><a href="com/nandini/recipevault/category/CategoryController.html#updateCategory(long,com.nandini.recipevault.category.Category)" class="member-name-link">updateCategory(long, Category)</a> - Method in class com.nandini.recipevault.category.<a href="com/nandini/recipevault/category/CategoryController.html" title="class in com.nandini.recipevault.category">CategoryController</a></dt>
+<dt><a href="com/nandini/recipevault/category/CategoryController.html#updateCategory(long,com.nandini.recipevault.category.CategoryDto)" class="member-name-link">updateCategory(long, CategoryDto)</a> - Method in class com.nandini.recipevault.category.<a href="com/nandini/recipevault/category/CategoryController.html" title="class in com.nandini.recipevault.category">CategoryController</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:O">O</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:U">U</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a><span class="vertical-separator">|</span><a href="constant-values.html">Constant&nbsp;Field&nbsp;Values</a><span class="vertical-separator">|</span><a href="serialized-form.html">Serialized&nbsp;Form</a></main>
