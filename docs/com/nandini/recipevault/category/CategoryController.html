@@ -93,18 +93,6 @@ loadScripts(document, 'script');</script>
 @RequestMapping("/api/categories")
 </span><span class="modifiers">public class </span><span class="element-name type-name-label">CategoryController</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">REST controller for managing <a href="Category.html" title="class in com.nandini.recipevault.category"><code>Category</code></a> entities.
-
- <p>Provides endpoints for creating, retrieving, updating,
- and deleting categories in the Recipe Vault application.
- -----
- Example usage:
- <pre>
- POST /api/categories
- {
-   "name": "Desserts"
- }
- </pre></div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -135,7 +123,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity<wbr>&lt;<a href="Category.html" title="class in com.nandini.recipevault.category">Category</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#createCategory(com.nandini.recipevault.category.Category)" class="member-name-link">createCategory</a><wbr>(<a href="Category.html" title="class in com.nandini.recipevault.category">Category</a>&nbsp;category)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity<wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Void.html" title="class or interface in java.lang" class="external-link">Void</a>&gt;</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity<wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#deleteCategory(long)" class="member-name-link">deleteCategory</a><wbr>(long&nbsp;id)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity<wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Category.html" title="class in com.nandini.recipevault.category">Category</a>&gt;&gt;</code></div>
@@ -182,14 +170,15 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="getAllCategories()">
 <h3>getAllCategories</h3>
-<div class="member-signature"><span class="annotations">@GetMapping
+<div class="member-signature"><span class="annotations">@GetMapping(produces="application/json")
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Category.html" title="class in com.nandini.recipevault.category">Category</a>&gt;&gt;</span>&nbsp;<span class="element-name">getAllCategories</span>()</div>
 </section>
 </li>
 <li>
 <section class="detail" id="getCategoryById(long)">
 <h3>getCategoryById</h3>
-<div class="member-signature"><span class="annotations">@GetMapping("/{id}")
+<div class="member-signature"><span class="annotations">@GetMapping(value="/{id}",
+            produces="application/json")
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="Category.html" title="class in com.nandini.recipevault.category">Category</a>&gt;</span>&nbsp;<span class="element-name">getCategoryById</span><wbr><span class="parameters">(@PathVariable
  long&nbsp;id)</span></div>
 </section>
@@ -197,7 +186,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="createCategory(com.nandini.recipevault.category.Category)">
 <h3>createCategory</h3>
-<div class="member-signature"><span class="annotations">@PostMapping
+<div class="member-signature"><span class="annotations">@PostMapping(produces="application/json")
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="Category.html" title="class in com.nandini.recipevault.category">Category</a>&gt;</span>&nbsp;<span class="element-name">createCategory</span><wbr><span class="parameters">(@RequestBody
  <a href="Category.html" title="class in com.nandini.recipevault.category">Category</a>&nbsp;category)</span></div>
 </section>
@@ -205,7 +194,8 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="updateCategory(long,com.nandini.recipevault.category.Category)">
 <h3>updateCategory</h3>
-<div class="member-signature"><span class="annotations">@PutMapping("/{id}")
+<div class="member-signature"><span class="annotations">@PutMapping(value="/{id}",
+            produces="application/json")
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="Category.html" title="class in com.nandini.recipevault.category">Category</a>&gt;</span>&nbsp;<span class="element-name">updateCategory</span><wbr><span class="parameters">(@PathVariable
  long&nbsp;id,
  @RequestBody
@@ -215,8 +205,9 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="deleteCategory(long)">
 <h3>deleteCategory</h3>
-<div class="member-signature"><span class="annotations">@DeleteMapping("/{id}")
-</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Void.html" title="class or interface in java.lang" class="external-link">Void</a>&gt;</span>&nbsp;<span class="element-name">deleteCategory</span><wbr><span class="parameters">(@PathVariable
+<div class="member-signature"><span class="annotations">@DeleteMapping(value="/{id}",
+               produces="application/json")
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name">deleteCategory</span><wbr><span class="parameters">(@PathVariable
  long&nbsp;id)</span></div>
 </section>
 </li>
