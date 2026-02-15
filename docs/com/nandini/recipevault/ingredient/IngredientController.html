@@ -90,7 +90,7 @@ loadScripts(document, 'script');</script>
 <section class="class-description" id="class-description">
 <hr>
 <div class="type-signature"><span class="annotations">@RestController
-@RequestMapping("/ingredients")
+@RequestMapping("/api/ingredients")
 </span><span class="modifiers">public class </span><span class="element-name type-name-label">IngredientController</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
 </section>
@@ -124,7 +124,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="IngredientDto.html" title="class in com.nandini.recipevault.ingredient">IngredientDto</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#createIngredient(com.nandini.recipevault.ingredient.IngredientDto)" class="member-name-link">createIngredient</a><wbr>(<a href="IngredientDto.html" title="class in com.nandini.recipevault.ingredient">IngredientDto</a>&nbsp;ingredientDto)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity<wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#deleteIngredient(java.lang.Long)" class="member-name-link">deleteIngredient</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Long.html" title="class or interface in java.lang" class="external-link">Long</a>&nbsp;id)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a><wbr>&lt;<a href="IngredientDto.html" title="class in com.nandini.recipevault.ingredient">IngredientDto</a>&gt;</code></div>
@@ -168,7 +168,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="createIngredient(com.nandini.recipevault.ingredient.IngredientDto)">
 <h3>createIngredient</h3>
-<div class="member-signature"><span class="annotations">@PostMapping
+<div class="member-signature"><span class="annotations">@PostMapping(produces="application/json")
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="IngredientDto.html" title="class in com.nandini.recipevault.ingredient">IngredientDto</a></span>&nbsp;<span class="element-name">createIngredient</span><wbr><span class="parameters">(@RequestBody
  <a href="IngredientDto.html" title="class in com.nandini.recipevault.ingredient">IngredientDto</a>&nbsp;ingredientDto)</span></div>
 </section>
@@ -176,14 +176,15 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="getAllIngredients()">
 <h3>getAllIngredients</h3>
-<div class="member-signature"><span class="annotations">@GetMapping
+<div class="member-signature"><span class="annotations">@GetMapping(produces="application/json")
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="IngredientDto.html" title="class in com.nandini.recipevault.ingredient">IngredientDto</a>&gt;</span>&nbsp;<span class="element-name">getAllIngredients</span>()</div>
 </section>
 </li>
 <li>
 <section class="detail" id="getIngredientById(java.lang.Long)">
 <h3>getIngredientById</h3>
-<div class="member-signature"><span class="annotations">@GetMapping("/{id}")
+<div class="member-signature"><span class="annotations">@GetMapping(value="/{id}",
+            produces="application/json")
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="IngredientDto.html" title="class in com.nandini.recipevault.ingredient">IngredientDto</a></span>&nbsp;<span class="element-name">getIngredientById</span><wbr><span class="parameters">(@PathVariable
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Long.html" title="class or interface in java.lang" class="external-link">Long</a>&nbsp;id)</span></div>
 </section>
@@ -191,8 +192,9 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="deleteIngredient(java.lang.Long)">
 <h3>deleteIngredient</h3>
-<div class="member-signature"><span class="annotations">@DeleteMapping("/{id}")
-</span><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">deleteIngredient</span><wbr><span class="parameters">(@PathVariable
+<div class="member-signature"><span class="annotations">@DeleteMapping(value="/{id}",
+               produces="application/json")
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name">deleteIngredient</span><wbr><span class="parameters">(@PathVariable
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Long.html" title="class or interface in java.lang" class="external-link">Long</a>&nbsp;id)</span></div>
 </section>
 </li>
