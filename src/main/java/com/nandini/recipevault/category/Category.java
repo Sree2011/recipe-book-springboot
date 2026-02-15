@@ -33,6 +33,9 @@ public class Category {
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
     List<Recipe> recipes = new ArrayList<>();
 
+
+    public Category() {}
+
     public Category(Long id, String name) {
         this.id = id;
         this.name = name;

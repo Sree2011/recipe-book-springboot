@@ -16,16 +16,25 @@ import io.swagger.v3.oas.annotations.media.Schema;
 @Schema(description = "DTO representing a recipe category with name and quantity")
 public class CategoryDto {
 
+    @Schema(description = "ID of the category")
+    private Long id;
     @Schema(description = "Name of the category", example = "Desserts")
     private String name;
 
-    @Schema(description = "Quantity or count associated with the category", example = "10 recipes")
-    private String quantity;
 
-    public CategoryDto(String name, String quantity) {
+
+    public CategoryDto(String name) {
         this.name = name;
-        this.quantity = quantity;
     }
+
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public CategoryDto() {}
 
     public String getName() {
         return name;
@@ -35,19 +44,11 @@ public class CategoryDto {
         this.name = name;
     }
 
-    public String getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(String quantity) {
-        this.quantity = quantity;
-    }
 
     @Override
     public String toString() {
         return "CategoryDto{" +
                 "name='" + name + '\'' +
-                ", quantity='" + quantity + '\'' +
                 '}';
     }
 }

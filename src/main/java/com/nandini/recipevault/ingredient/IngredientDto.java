@@ -4,6 +4,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 @Schema(description = "Schema representing an ingredient with name and quantity")
 public class IngredientDto {
+
+        @Schema(description = "ID of the ingredient", example = "1")
+        private Long id;
         @Schema(description = "Name of the ingredient", example = "Sugar")
         private String name;
 
@@ -14,6 +17,22 @@ public class IngredientDto {
         public IngredientDto(String name, String quantity) {
         this.name = name;
         this.quantity = quantity;
+    }
+
+    public IngredientDto() {}
+
+    public IngredientDto(Long id, String name, String quantity) {
+        this.id = id;
+        this.name = name;
+        this.quantity = quantity;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

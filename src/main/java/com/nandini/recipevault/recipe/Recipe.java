@@ -26,6 +26,8 @@ public class Recipe {
     @JoinColumn(name = "category_id")
     private Category category;
 
+
+
     public Recipe(String name, String description, String instructions, LocalDateTime createdAt) {
         this.name = name;
         this.description = description;
