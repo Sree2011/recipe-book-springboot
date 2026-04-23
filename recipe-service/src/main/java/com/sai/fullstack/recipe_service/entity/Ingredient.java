@@ -1,6 +1,6 @@
 package com.sai.fullstack.recipe_service.entity;
 
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,18 +16,24 @@ import lombok.Setter;
 public class Ingredient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Unique ID for this specific mapping
+    private Long id;
 
-    private String name; // This links to your Master list
     private double quantity;
     private String unit;
 
+    // Corrected: Mapping to the MasterIngredient entity instead of a String
+    @ManyToOne
+    @JoinColumn(name = "ingredient_name", referencedColumnName = "name")
+    private MasterIngredient masterIngredient;
+
     @ManyToOne
     @JoinColumn(name = "recipe_id")
-    private Recipe recipe; // Links back to the Recipe
+    @JsonBackReference
+    private Recipe recipe;
 
-    public Ingredient(String name, double quantity, String unit) {
-        this.name = name;
+    // Updated Constructor to accept the MasterIngredient object
+    public Ingredient(MasterIngredient masterIngredient, double quantity, String unit) {
+        this.masterIngredient = masterIngredient;
         this.quantity = quantity;
         this.unit = unit;
     }

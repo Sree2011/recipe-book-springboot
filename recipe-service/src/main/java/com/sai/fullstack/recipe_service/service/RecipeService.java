@@ -1,6 +1,5 @@
 package com.sai.fullstack.recipe_service.service;
 
-
 import com.sai.fullstack.recipe_service.entity.Ingredient;
 import com.sai.fullstack.recipe_service.entity.MasterIngredient;
 import com.sai.fullstack.recipe_service.entity.Recipe;
@@ -8,12 +7,11 @@ import com.sai.fullstack.recipe_service.repository.MasterIngredientRepository;
 import com.sai.fullstack.recipe_service.repository.RecipeRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Service;
 
-import org.springframework.web.bind.annotation.RequestParam;
-
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class RecipeService {
@@ -21,23 +19,22 @@ public class RecipeService {
     @Autowired
     private RecipeRepository repository;
 
+    @Autowired
+    private MasterIngredientRepository masterRepo;
 
-    public List<Recipe> getAllRecipes(){
+    public List<Recipe> getAllRecipes() {
         return repository.findAll();
     }
 
-
-    public Recipe getRecipeById(@RequestParam Long id){
-        return repository.getReferenceById(id);
+    public Recipe getRecipeById(Long id) {
+        // Changed from getReferenceById to findById for better error handling
+        return repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Recipe not found with id: " + id));
     }
-
-
-    @Autowired
-    private MasterIngredientRepository masterRepo; // You'll need this
 
     @Transactional
     public Recipe createRecipe(Recipe recipe) {
-        // We use a new object to ensure clean state
+        // 1. Create a clean Recipe instance
         Recipe recipeToSave = new Recipe();
         recipeToSave.setName(recipe.getName());
         recipeToSave.setInstructions(recipe.getInstructions());
@@ -46,18 +43,46 @@ public class RecipeService {
         if (recipeToSave.getIngredients() != null) {
             for (Ingredient ing : recipeToSave.getIngredients()) {
 
-                // 1. LINK: Fix the NULL recipe_id
+                // 2. LINK: Link the map entity back to the parent Recipe
+                // This ensures the RECIPE_ID column is populated
                 ing.setRecipe(recipeToSave);
 
-                // 2. SYNC: Add to Master table if it doesn't exist
-                // This works now because the Repo uses String ID
-                if (!masterRepo.existsById(ing.getName())) {
-                    masterRepo.save(new MasterIngredient(ing.getName()));
+                // 3. SYNC MASTER: Handle the MasterIngredient relationship
+                // Since the name field was removed from Ingredient, we use the name
+                // provided in the MasterIngredient object sent in the request.
+                String ingredientName = ing.getMasterIngredient().getName().toLowerCase();
+
+                MasterIngredient master = masterRepo.findById(ingredientName.toLowerCase())
+                        .orElseGet(() -> {
+                            // Create and save new MasterIngredient if it doesn't exist
+                            // Initialize the list to avoid NullPointerException later
+                            return masterRepo.save(new MasterIngredient(ingredientName, new ArrayList<>()));
+                        });
+
+                // 4. ESTABLISH BIDIRECTIONAL LINK:
+                // Link the specific occurrence to the master entry
+                ing.setMasterIngredient(master);
+
+                // (Optional) Update the master's list in memory
+                if (master.getIngredientOccurrences() == null) {
+                    master.setIngredientOccurrences(new ArrayList<>());
                 }
+                master.getIngredientOccurrences().add(ing);
             }
         }
 
         return repository.save(recipeToSave);
+    }
+
+    /**
+     * New Method: Get all Recipe IDs linked to a specific ingredient name
+     */
+    public List<Long> getRecipeIdsByIngredient(String ingredientName) {
+        return masterRepo.findById(ingredientName)
+                .map(master -> master.getIngredientOccurrences().stream()
+                        .map(occ -> occ.getRecipe().getId())
+                        .collect(Collectors.toList()))
+                .orElse(new ArrayList<>());
     }
 
     public String deleteRecipe(Long id) {
