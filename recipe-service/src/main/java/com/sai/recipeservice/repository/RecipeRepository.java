@@ -1,7 +1,7 @@
-package com.sai.fullstack.recipe_service.repository;
+package com.sai.recipeservice.repository;
 
 
-import com.sai.fullstack.recipe_service.entity.Recipe;
+import com.sai.recipeservice.entity.Recipe;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

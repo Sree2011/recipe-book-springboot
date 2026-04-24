@@ -1,4 +1,4 @@
-package com.sai.fullstack.recipe_service.dto;
+package com.sai.recipeservice.dto;
 
 
 

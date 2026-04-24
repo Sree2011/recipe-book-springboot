@@ -21,7 +21,51 @@ The system consists of two primary services:
 
 ## Project Structure
 
-[list.md](./list.md)
+# Repository Structure
+
+```
+├── recipe-service
+│   ├── src
+│   │   └── main
+│   │       ├── java
+│   │       │   └── com
+│   │       │       └── sai
+│   │       │           └── fullstack
+│   │       │               └── recipe_service
+│   │       │                   ├── controller
+│   │       │                   ├── dto
+│   │       │                   ├── entity
+│   │       │                   ├── repository
+│   │       │                   ├── service
+│   │       │                   └── RecipeServiceApplication.java
+│   │       └── resources
+│   │           └── application.properties
+│   ├── .gitattributes
+│   ├── .gitignore
+│   ├── mvnw
+│   ├── mvnw.cmd
+│   └── pom.xml
+├── scaling-service
+│   ├── src
+│   │   └── main
+│   │       ├── java
+│   │       │   └── com
+│   │       │       └── sai
+│   │       │           └── fullstack
+│   │       │               └── scaling_service
+│   │       │                   ├── client
+│   │       │                   └── ScalingServiceApplication.java
+│   │       └── resources
+│   │           └── application.properties
+│   ├── .gitattributes
+│   ├── .gitignore
+│   ├── mvnw
+│   ├── mvnw.cmd
+│   └── pom.xml
+├── _config.yml
+└── README.md
+```
+
 
 ## Features
 

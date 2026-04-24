@@ -9,66 +9,46 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.sai</groupId>
-	<artifactId>scaling-service</artifactId>
+	<artifactId>recipebook</artifactId>
 	<version>1.0</version>
-	<name>ScaleEngine: Dynamic Portion and Ingredient Adjuster</name>
+	<packaging>pom</packaging>
+	<modules>
+		<module>recipe-service</module>
+		<module>scaling-service</module>
+	</modules>
+	<name>ChefScale: Smart Recipe and Ingredient Manager</name>
 	<description>
-		A specialized microservice designed to handle the mathematical logic of ingredient scaling.
-		It utilizes Spring Cloud OpenFeign to communicate with the Recipe Service, retrieving original recipe
-		data and applying scaling algorithms to adjust quantities based on user-defined portion sizes.
-		This decoupling allows the scaling logic to remain isolated and performant.
-	</description>
+		A full-stack Spring Boot application designed to handle recipe storage and automated portion scaling.
+		It utilizes an H2 in-memory database for rapid development and implements a "Master Ingredient" logic to track
+		ingredient occurrences across different recipes efficiently.</description>
 	<url/>
 	<licenses>
 		<license/>
 	</licenses>
 	<developers>
-		<developer/>
+		<developer>
+			<name>Sree Sai Nandini Gundraju</name>
+			<email>gundrajusreesainandini@gmail.com</email>
+			<url>https://Sree2011.github.io/</url>
+		</developer>
 	</developers>
+	<scm>
+		<connection>scm:git:https://github.com/sree2011/recipe-book-springboot.git</connection>
 
+		<developerConnection>scm:git:ssh://github.com:sree2011/recipe-book-springboot.git</developerConnection>
+
+		<tag>HEAD</tag>
+
+		<url>https://github.com/sree2011/recipe-book-springboot</url>
+	</scm>
 	<properties>
 		<java.version>21</java.version>
 		<spring-cloud.version>2025.1.1</spring-cloud.version>
+		<springdoc.version>3.0.0</springdoc.version>
+		<lombok.version>1.18.30</lombok.version>
+		<h2.version>2.2.224</h2.version>
 	</properties>
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-h2console</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-webmvc</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-openfeign</artifactId>
-		</dependency>
 
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-webmvc-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -78,8 +58,41 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+
+			<dependency>
+				<groupId>org.springdoc</groupId>
+				<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+				<version>${springdoc.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.h2database</groupId>
+				<artifactId>h2</artifactId>
+				<version>${h2.version}</version>
+				<scope>runtime</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<plugins>

@@ -1,7 +1,7 @@
-package com.sai.fullstack.recipe_service.controller;
+package com.sai.recipeservice.controller;
 
-import com.sai.fullstack.recipe_service.entity.Recipe;
-import com.sai.fullstack.recipe_service.service.RecipeService;
+import com.sai.recipeservice.entity.Recipe;
+import com.sai.recipeservice.service.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

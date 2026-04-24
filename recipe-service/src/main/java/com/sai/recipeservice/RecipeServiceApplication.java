@@ -1,11 +1,11 @@
-package com.sai.fullstack.recipe_service;
+package com.sai.recipeservice;
 
-import com.sai.fullstack.recipe_service.dto.IngredientDTO;
-import com.sai.fullstack.recipe_service.entity.Ingredient;
-import com.sai.fullstack.recipe_service.entity.MasterIngredient;
-import com.sai.fullstack.recipe_service.entity.Recipe;
+import com.sai.recipeservice.dto.IngredientDTO;
+import com.sai.recipeservice.entity.Ingredient;
+import com.sai.recipeservice.entity.MasterIngredient;
+import com.sai.recipeservice.entity.Recipe;
 
-import com.sai.fullstack.recipe_service.service.RecipeService;
+import com.sai.recipeservice.service.RecipeService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

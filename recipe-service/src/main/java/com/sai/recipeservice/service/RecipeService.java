@@ -1,10 +1,10 @@
-package com.sai.fullstack.recipe_service.service;
+package com.sai.recipeservice.service;
 
-import com.sai.fullstack.recipe_service.entity.Ingredient;
-import com.sai.fullstack.recipe_service.entity.MasterIngredient;
-import com.sai.fullstack.recipe_service.entity.Recipe;
-import com.sai.fullstack.recipe_service.repository.MasterIngredientRepository;
-import com.sai.fullstack.recipe_service.repository.RecipeRepository;
+import com.sai.recipeservice.entity.Ingredient;
+import com.sai.recipeservice.entity.MasterIngredient;
+import com.sai.recipeservice.entity.Recipe;
+import com.sai.recipeservice.repository.MasterIngredientRepository;
+import com.sai.recipeservice.repository.RecipeRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

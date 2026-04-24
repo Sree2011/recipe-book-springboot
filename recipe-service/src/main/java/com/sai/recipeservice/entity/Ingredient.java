@@ -1,4 +1,4 @@
-package com.sai.fullstack.recipe_service.entity;
+package com.sai.recipeservice.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
