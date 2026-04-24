@@ -1,8 +1,8 @@
-title: ChefScale - Smart Recipe & Ingredient Manager
-
-description: A full-stack Spring Boot application designed to handle recipe storage and automated portion scaling. \
-It utilizes an H2 in-memory database for rapid development and implements a "Master Ingredient" logic to track \
-ingredient occurrences across different recipes efficiently.
+title: "ChefScale: Smart Recipe & Ingredient Manager"
+description: >-
+  A full-stack Spring Boot application designed to handle recipe storage and automated portion scaling.
+  It utilizes an H2 in-memory database for rapid development and implements a "Master Ingredient"
+  logic to track ingredient occurrences across different recipes efficiently.
 
 plugins:
   - jekyll-relative-links
