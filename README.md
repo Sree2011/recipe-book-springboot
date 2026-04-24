@@ -21,15 +21,18 @@ The system consists of two primary services:
 
 ## Project Structure
 
-```text
-recipe-book-springboot/
-├── recipe-service/           # Handles recipe CRUD and ingredient mapping
-│   ├── src/main/java         # Spring Boot application and logic
-│   └── src/main/resources    # Configuration and database properties
-├── scaling-service/          # Handles portion scaling logic
-│   ├── src/main/java         # Spring Boot application
-│   └── src/main/resources    # Configuration
-└── .idea/                    # Shared IDE configuration files
+```mermaid
+mindmap
+  root((project))
+    src
+      components
+        Button.jsx
+        Navbar.jsx
+      App.js
+    public
+      index.html
+      favicon.ico
+    package.json
 ```
 
 ## Features
