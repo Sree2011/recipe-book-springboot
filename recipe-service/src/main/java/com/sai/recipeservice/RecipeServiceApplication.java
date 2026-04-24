@@ -53,7 +53,8 @@ public class RecipeServiceApplication {
 
 			// 3. Create the Recipe Entity
 			Recipe chai = new Recipe(
-					null, // ID (Hibernate will generate this)
+					null, // ID (Hibernate will generate this),
+					2,
 					"Ginger Chai",
 					"Boil water with ginger and tea. Add milk and sugar. Bring to a boil twice.",
 					chaiEntities

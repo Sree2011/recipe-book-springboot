@@ -1,13 +1,15 @@
+
 package com.sai.scalingservice;
+
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
+@EnableFeignClients
 public class ScalingServiceApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(ScalingServiceApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(ScalingServiceApplication.class, args);
+    }
 }

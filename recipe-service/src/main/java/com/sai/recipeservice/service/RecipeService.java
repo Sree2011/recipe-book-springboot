@@ -37,6 +37,7 @@ public class RecipeService {
         // 1. Create a clean Recipe instance
         Recipe recipeToSave = new Recipe();
         recipeToSave.setName(recipe.getName());
+        recipeToSave.setServings(recipe.getServings());
         recipeToSave.setInstructions(recipe.getInstructions());
         recipeToSave.setIngredients(recipe.getIngredients());
 
