@@ -21,19 +21,7 @@ The system consists of two primary services:
 
 ## Project Structure
 
-```mermaid
-mindmap
-  root((project))
-    src
-      components
-        Button.jsx
-        Navbar.jsx
-      App.js
-    public
-      index.html
-      favicon.ico
-    package.json
-```
+[list.md](./list.md)
 
 ## Features
 
