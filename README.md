@@ -56,26 +56,25 @@ The system consists of three primary components:
 <div class="mermaid">
 erDiagram
     Recipe {
-        bigint id PK
+        Long id PK
         int servings
         string name
         string instructions
     }
     Ingredient {
-        bigint id PK
+        Long id PK
         double quantity
         string unit
-        bigint recipe_id FK
-        bigint masterIngredient_id FK
+        Long recipe_id FK
+        Long masterIngredient_id FK
     }
     MasterIngredient {
-        bigint id PK
-        string name UNIQUE
+        Long id PK
+        string name UK
     }
 
     Recipe ||--o{ Ingredient : contains
     MasterIngredient ||--o{ Ingredient : "referenced by"
-
 </div>
 
 ### Frontend
