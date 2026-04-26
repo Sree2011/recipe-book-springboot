@@ -72,9 +72,10 @@ erDiagram
         bigint id PK
         string name UNIQUE
     }
+
     Recipe ||--o{ Ingredient : contains
     MasterIngredient ||--o{ Ingredient : "referenced by"
-end
+
 </div>
 
 ### Frontend
