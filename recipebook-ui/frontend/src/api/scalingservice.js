@@ -5,5 +5,5 @@ const recipeApi = axios.create({
 });
 
 
-export const getScaledRecipe = (id, factor) =>
-    recipeApi.get(`/scale/${id}`, { params: { factor } });
+export const getScaledRecipe = (id, targetPortions) =>
+    scalingApi.get(`scale/${id}?targetPortions=${targetPortions}`);

@@ -3,10 +3,12 @@ import {
     getRecipeById,
     getAllRecipes,
     getRecipesByIngredient,
-
+    getAllMasterIngredients,   // ✅ add this import
     createRecipe,
     deleteRecipeById
 } from '../api/recipeService';
+
+import { getScaledRecipe } from "../api/scalingservice.js";
 
 function RecipeScaler() {
     const [recipeId, setRecipeId] = useState('');
@@ -14,9 +16,7 @@ function RecipeScaler() {
     const [ingredients, setIngredients] = useState([]);
     const [recipes, setRecipes] = useState([]);
     const [recipe, setRecipe] = useState(null);
-
-
-
+    const [targetPortions, setTargetPortions] = useState(''); // ✅ new state
 
     // Fetch recipe by ID
     const handleFetchById = async () => {
@@ -32,7 +32,7 @@ function RecipeScaler() {
     const handleFetchIngredients = async () => {
         try {
             const response = await getAllMasterIngredients();
-            setIngredients(response.data); // ["bread","cheese","milk",...]
+            setIngredients(response.data);
         } catch (err) {
             console.error("Error fetching master ingredients:", err);
         }
@@ -48,11 +48,11 @@ function RecipeScaler() {
         }
     };
 
-    // Fetch recipes by ingredient (IDs → full recipes)
+    // Fetch recipes by ingredient
     const handleFetchByIngredient = async () => {
         try {
             const response = await getRecipesByIngredient(ingredientName);
-            const recipeIds = response.data; // [1,2,3]
+            const recipeIds = response.data;
             const recipePromises = recipeIds.map((id) => getRecipeById(id));
             const recipeResponses = await Promise.all(recipePromises);
             setRecipes(recipeResponses.map((res) => res.data));
@@ -71,7 +71,7 @@ function RecipeScaler() {
         }
     };
 
-    // Create a new recipe (example payload)
+    // Create a new recipe
     const handleCreate = async () => {
         const newRecipe = {
             name: "Test Recipe",
@@ -90,6 +90,16 @@ function RecipeScaler() {
         }
     };
 
+    // Scale recipe
+    const handleScaleRecipe = async () => {
+        try {
+            const response = await getScaledRecipe(recipeId, targetPortions);
+            setRecipe(response.data);
+        } catch (err) {
+            console.error("Error scaling recipe:", err);
+        }
+    };
+
     return (
         <div>
             <h2>Recipe Actions</h2>
@@ -104,6 +114,17 @@ function RecipeScaler() {
                 />
                 <button onClick={handleFetchById}>Get Recipe by ID</button>
                 <button onClick={handleDelete}>Delete Recipe</button>
+            </div>
+
+            {/* Scale Recipe */}
+            <div>
+                <input
+                    type="number"
+                    placeholder="Target portions"
+                    value={targetPortions}
+                    onChange={(e) => setTargetPortions(e.target.value)}
+                />
+                <button onClick={handleScaleRecipe}>Scale Recipe</button>
             </div>
 
             {/* Recipes by Ingredient */}
