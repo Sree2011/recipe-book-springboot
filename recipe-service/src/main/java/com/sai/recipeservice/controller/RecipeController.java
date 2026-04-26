@@ -56,4 +56,11 @@ public class RecipeController {
         List<Long> recipeIds = service.getRecipeIdsByIngredient(name.toLowerCase());
         return ResponseEntity.ok(recipeIds);
     }
+
+    @GetMapping("/masteringredients")
+    @Operation(summary = "Get all the master ingredients available")
+    public ResponseEntity<List<String>> getAllMasterIngredients() {
+        List<String> master = service.getAllMasterIngredients();
+        return ResponseEntity.ok(master);
+    }
 }

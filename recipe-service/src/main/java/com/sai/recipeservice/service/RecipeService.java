@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static org.hibernate.Hibernate.map;
+
 @Service
 public class RecipeService {
 
@@ -90,5 +92,15 @@ public class RecipeService {
         Recipe recipe = getRecipeById(id);
         repository.delete(recipe);
         return recipe.getName() + " is deleted successfully";
+    }
+
+    public List<String> getAllMasterIngredients() {
+        List<MasterIngredient> master =  masterRepo.findAll();
+        List<String> names = new ArrayList<>();
+        for (MasterIngredient m : master) {
+            names.add(m.getName());
+        }
+        return names;
+
     }
 }
