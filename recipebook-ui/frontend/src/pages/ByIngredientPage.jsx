@@ -66,7 +66,9 @@ function ByIngredientPage() {
                                     <div>
                                         <strong>{r.name}</strong> — {r.servings} servings
                                         <br />
-                                        <em>{r.instructions}</em>
+
+                                        <strong>Ingredients</strong>
+                                        <br/>
                                         <ul>
                                             {r.ingredients.map((ing) => (
                                                 <li key={ing.id}>
@@ -74,6 +76,10 @@ function ByIngredientPage() {
                                                 </li>
                                             ))}
                                         </ul>
+
+                                        <strong>Instructions</strong>
+                                        <br/>
+                                        <em>{r.instructions}</em>
                                     </div>
                                 </ListItem>
                             ))}

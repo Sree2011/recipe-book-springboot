@@ -7,6 +7,7 @@ import GetAllRecipesPage from './pages/GetAllRecipesPage';
 import CreateRecipePage from './pages/CreateRecipePage';
 import DeleteRecipePage from './pages/DeleteRecipePage';
 import ByIngredientPage from './pages/ByIngredientPage';
+import ScaleRecipePage from "./pages/ScaleRecipePage.jsx";
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                 <Route path="/create" element={<CreateRecipePage />} />
                 <Route path="/delete" element={<DeleteRecipePage />} />
                 <Route path="/by-ingredient" element={<ByIngredientPage />} />
+                <Route path="/scale-recipe" element={<ScaleRecipePage />} />
             </Routes>
         </Router>
     );

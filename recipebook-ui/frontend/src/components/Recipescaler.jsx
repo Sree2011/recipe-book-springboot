@@ -116,16 +116,7 @@ function RecipeScaler() {
                 <button onClick={handleDelete}>Delete Recipe</button>
             </div>
 
-            {/* Scale Recipe */}
-            <div>
-                <input
-                    type="number"
-                    placeholder="Target portions"
-                    value={targetPortions}
-                    onChange={(e) => setTargetPortions(e.target.value)}
-                />
-                <button onClick={handleScaleRecipe}>Scale Recipe</button>
-            </div>
+
 
             {/* Recipes by Ingredient */}
             <div>

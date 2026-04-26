@@ -197,3 +197,7 @@
     border-right-color: var(--border);
   }
 }
+
+ul{
+  list-style-type: none;
+}

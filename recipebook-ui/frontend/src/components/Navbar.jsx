@@ -14,6 +14,7 @@ function Navbar() {
                 <Button color="inherit" component={Link} to="/by-ingredient">By Ingredient</Button>
                 <Button color="inherit" component={Link} to="/create">Create</Button>
                 <Button color="inherit" component={Link} to="/delete">Delete</Button>
+                <Button color="inherit" component={Link} to="/scale-recipe">Scale recipe</Button>
             </Toolbar>
         </AppBar>
     );

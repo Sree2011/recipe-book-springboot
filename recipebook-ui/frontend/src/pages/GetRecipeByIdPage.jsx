@@ -25,9 +25,11 @@ function GetRecipeByIdPage() {
 
                 {recipe && (
                     <div style={{ marginTop: '1rem' }}>
-                        <Typography variant="h6">{recipe.name}</Typography>
-                        <Typography>Servings: {recipe.servings}</Typography>
-                        <Typography>Instructions: {recipe.instructions}</Typography>
+                        <Typography variant="h5">{recipe.name}</Typography>
+                        <Typography><strong>Servings:</strong> {recipe.servings}</Typography>
+
+
+                        <Typography><strong>Ingredients:</strong> </Typography>
                         <ul>
                             {recipe.ingredients.map((ing) => (
                                 <li key={ing.id}>
@@ -35,6 +37,8 @@ function GetRecipeByIdPage() {
                                 </li>
                             ))}
                         </ul>
+
+                        <Typography><strong> Instructions:</strong> <br/> {recipe.instructions}</Typography>
                     </div>
                 )}
             </CardContent>
