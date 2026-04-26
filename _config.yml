@@ -23,7 +23,7 @@ include:
   - ISSUE_TEMPLATE.md
   - PULL_REQUEST_TEMPLATE.md
 
-remote_theme: pages-themes/cayman
+remote_theme: pages-themes/slate
 markdown: kramdown
 kramdown:
   input: Kramdown
