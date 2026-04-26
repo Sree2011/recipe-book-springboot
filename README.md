@@ -1,3 +1,9 @@
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: 'default' });
+</script>
+
+
 Here’s a polished version of your README that includes the **React + Vite frontend** alongside your Spring Boot microservices:
 
 ---
@@ -47,7 +53,7 @@ The system consists of three primary components:
 
 
 #### Entity relationship diagram
-```mermaid
+<div class="mermaid">
 erDiagram
     Recipe {
         bigint id PK
@@ -72,7 +78,7 @@ erDiagram
     Recipe ||--o{ Ingredient : contains
     MasterIngredient ||--o{ Ingredient : referenced_by
 
-```
+</div>
 
 ### Frontend
 * **Browse Recipes**: View all recipes or search by ID.
