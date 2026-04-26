@@ -55,7 +55,6 @@ The system consists of three primary components:
 #### Entity relationship diagram
 <div class="mermaid">
 erDiagram
-
     Recipe {
         bigint id PK
         int servings
@@ -69,15 +68,13 @@ erDiagram
         bigint recipe_id FK
         bigint masterIngredient_id FK
     }
-
     MasterIngredient {
         bigint id PK
         string name UNIQUE
     }
-
     Recipe ||--o{ Ingredient : contains
     MasterIngredient ||--o{ Ingredient : "referenced by"
-
+end
 </div>
 
 ### Frontend
