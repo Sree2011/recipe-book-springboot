@@ -3,11 +3,6 @@
   mermaid.initialize({ startOnLoad: true, theme: 'default' });
 </script>
 
-
-Here’s a polished version of your README that includes the **React + Vite frontend** alongside your Spring Boot microservices:
-
----
-
 # Recipe Book Microservices
 
 This project is a full‑stack application combining **Spring Boot microservices** with a **React + Vite frontend**. It manages recipes, ingredients, and scaling logic, with a clean separation of concerns between backend services and the UI.
