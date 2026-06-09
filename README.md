@@ -1,8 +1,3 @@
-<script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true, theme: 'default' });
-</script>
-
 # Recipe Book Microservices
 
 This project is a full‑stack application combining **Spring Boot microservices** with a **React + Vite frontend**. It manages recipes, ingredients, and scaling logic, with a clean separation of concerns between backend services and the UI.
