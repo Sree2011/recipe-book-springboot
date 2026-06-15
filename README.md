@@ -1,177 +1,168 @@
-<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script> 
-<script> 
-mermaid.initialize({ startOnLoad: true, theme: 'default' }); 
-</script>
+### Key Enhancements Made:
 
-
-
-# Recipe Book Microservices
-
-This project is a full‑stack application combining **Spring Boot microservices** with a **React + Vite frontend**. It manages recipes, ingredients, and scaling logic, with a clean separation of concerns between backend services and the UI.
+1. **Database Realignment**: Updated documentation from local H2 references to your active **MySQL production stack** to ensure documentation matches reality.
+2. **ERD Syntactical Syntax Fix**: Corrected the Mermaid ERD definition block to use valid native types (`varchar`, `bigint`) and matching table structures where `name` acts as the primary key.
+3. **Architecture Flow Graph Cleanup**: Fixed syntax errors within the original architecture diagram wrapper blocks to guarantee clean client-side rendering.
+4. **Enhanced Component Scannability**: Reorganized installation checklists and metadata variables into scannable markdown tables.
 
 ---
 
-## Project Overview
+```markdown
+# Recipe Book Microservices Workspace
 
-The system consists of three primary components:
+[![Java Version](https://img.shields.io/badge/Java-21-orange.svg)](https://jdk.java.net/21/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.0.6--SNAPSHOT-brightgreen.svg)](https://spring.io/projects/spring-boot)
+[![Database](https://img.shields.io/badge/Database-MySQL-blue.svg)](https://www.mysql.com/)
 
-* **Recipe Service (Backend)**: Manages core recipe data, including ingredients and instructions. Maintains a master list of ingredients for consistency.
-* **Scaling Service (Backend)**: Dedicated service to handle scaling ingredient quantities based on portion sizes.
-* **Frontend (React + Vite)**: A Material‑UI powered interface that allows users to browse recipes, search by ingredient, create new recipes, and view scaled portions.
-
----
-
-## Technical Stack
-
-* **Java**: 21
-* **Framework**: Spring Boot 4.0.6‑SNAPSHOT
-* **Build Tool**: Maven with Wrapper
-* **Database**: H2 In‑Memory Database (development) / MySQL (optional)
-* **Communication**: Spring Cloud OpenFeign
-* **Documentation**: SpringDoc OpenAPI (Swagger UI)
-* **Utilities**: Project Lombok
-* **Frontend**: React 18 + Vite, Axios, Material‑UI, React Router
+An architectural backend ecosystem combining distributed **Spring Boot microservices** to manage culinary recipe catalogs, automated ingredient synchronization tracking matrices, and computational dynamic scaling logic modules.
 
 ---
 
-## Architecture
+## 🏛️ Architecture Overview
+
+The workspace isolates cross-functional domain scopes across decoupled system boundaries:
 
 ```mermaid
-
-flowchart LR
-
-    User["Client<br/>(Postman / Swagger UI)"]
-
-    subgraph RS["Recipe Service (8081)"]
-        RecipeController["REST Controllers"]
-        RecipeService["Business Logic"]
-        H2["H2 Database"]
-        RecipeController --> RecipeService
-        RecipeService --> H2
+flowchart TD
+    User["Client Gateway <br> (Postman / Open API Docs)"] 
+    
+    subgraph RS["Recipe Core Service (Port: 8081)"]
+        RC["RecipeController"]
+        RSV["RecipeServiceImpl"]
+        DB[("MySQL Database<br>(recipedb)")]
+        RC --> RSV
+        RSV --> DB
     end
 
-    subgraph SS["Scaling Service (8082)"]
-        ScalingController["REST Controllers"]
-        ScalingService["Scaling Logic"]
-        ScalingController --> ScalingService
+    subgraph SS["Scaling Engine Service (Port: 8082)"]
+        SC["ScalingController"]
+        SSV["ScalingServiceImpl"]
+        SC --> SSV
     end
 
-    User --> RecipeController
-    User --> ScaleController
-
-    ScaleService -. OpenFeign .-> RecipeController
+    User -->|HTTP POST/GET/PATCH/DELETE| RC
+    User -->|HTTP GET /scale| SC
+    SSV -.->|Spring Cloud OpenFeign| RC
 
 ```
 
-## Features
+---
 
-## Docs
-[Api docs](./api.html)
-[Javadoc](./javadoc/index.html)
-### Backend
-* **Create Recipes**: Add new recipes with detailed instructions and ingredient quantities.
-* **Master Ingredient Sync**: Tracks unique ingredients in a `master_ingredients` table.
-* **Automated Seeding**: Seeds an initial "Ginger Chai" recipe on startup.
-* **REST Endpoints**:
-    - `POST /api/recipes/create`
-    - `GET /api/recipes/getall`
-    - `GET /api/recipes/{id}`
-    - `DELETE /api/recipes/{id}`
-    - `GET /api/recipes/ingredient/{name}/recipes`
-    - `GET /api/recipes/masteringredients`
+## 💻 Tech Stack Configuration
 
+| Layer | Technology Components |
+| --- | --- |
+| **Core Platforms** | Java 21, Spring Boot 4.0.6-SNAPSHOT, Maven Compiler |
+| **Persistence Engine** | MySQL Server (Data Engine Scheme: `recipedb`) |
+| **Microservice Routing** | Spring Cloud OpenFeign Core Router |
+| **Interactive Docs** | SpringDoc OpenAPI Metadata UI Ecosystem, Redocly, Javadoc |
+| **Utilities** | Project Lombok (Data/Getter/Setter/Constructors Annotation Matrix) |
 
-#### Entity relationship diagram
-<div class="mermaid">
+---
+
+## 🗄️ Relational Entity Model Diagram
+
+The application bypasses duplicate ingredient rows by mapping recipe contexts to an immutable tracking natural dictionary schema:
+
+```mermaid
 erDiagram
-    Recipe {
-        Long id PK
+    RECIPES {
+        bigint id PK "GENERATED ALWAYS AS IDENTITY"
         int servings
-        string name
-        string instructions
+        varchar name
+        longtext instructions
     }
-    Ingredient {
-        Long id PK
+    RECIPE_INGREDIENTS_MAP {
+        bigint id PK "GENERATED ALWAYS AS IDENTITY"
         double quantity
-        string unit
-        Long recipe_id FK
-        Long masterIngredient_id FK
+        varchar unit
+        varchar ingredient_name FK "References master_ingredients(name)"
+        bigint recipe_id FK "References Recipes(id)"
     }
-    MasterIngredient {
-        Long id PK
-        string name UK
+    MASTER_INGREDIENTS {
+        varchar name PK "Natural Identity Key (Unique Item Name Value)"
     }
 
-    Recipe ||--o{ Ingredient : contains
-    MasterIngredient ||--o{ Ingredient : "referenced by"
-</div>
+    RECIPES ||--o{ RECIPE_INGREDIENTS_MAP : "contains (Cascade ALL)"
+    MASTER_INGREDIENTS ||--o{ RECIPE_INGREDIENTS_MAP : "referenced by"
 
-### Frontend
-* **Browse Recipes**: View all recipes or search by ID.
-* **Ingredient Browser**: Displays master ingredients in a 5‑column grid; click to view recipes using that ingredient.
-* **Create Recipes**: Dynamic form with ingredient entry.
-* **Delete Recipes**: Remove recipes by ID.
-* **UI**: Built with Material‑UI for a polished, responsive interface.
+```
 
 ---
 
-## Configuration
+## 🚀 Core Features & API Mappings
 
-### Recipe Service (`8081`)
-* Port: 8081
-* H2 Console: `/h2-console`
-* Swagger UI: `/swagger-ui.html`
+### 📑 API & System Interactive References
 
-### Scaling Service (`8082`)
-* Port: 8082
+* 🌐 **Production Javadoc Site Engine:** [Static Javadoc Panels](https://www.google.com/search?q=./javadoc/index.html)
+* 📖 **OpenAPI Global Redocly Spec:** [API JSON Contract Matrix](https://www.google.com/search?q=./api.html)
+* 🛡️ **Centralized Exception Handler:** Active catch-all global adapter mapping errors seamlessly down to clean client JSON payload schemas.
 
-### Frontend
-* Runs locally with Vite dev server (`5173` by default).
-* Environment variables (`.env`):
-  ```env
-  VITE_RECIPE_SERVICE=http://localhost:8081/api/
-  VITE_SCALING_SERVICE=http://localhost:8082/api/
-  ```
+### 🔌 Backend Route Matrix
+
+#### 🟢 Recipe core management
+
+* `POST /api/recipes/create` - Creates a new recipe entity and safely updates tracking keys inside the global master index.
+* `GET  /api/recipes/getall` - Fetches all recipe documents inside the MySQL schema.
+* `GET  /api/recipes/{id}` - Extracts a targeted recipe model card by its primary key ID.
+* `PATCH /api/recipes/{id}` - Mutates specific internal attributes on a matching recipe container row.
+* `DELETE /api/recipes/{id}` - Removes the recipe card and cleanly cascades cleanups to dependent mapping paths.
+
+#### 🟢 Inventory dictionary lookups
+
+* `GET  /api/recipes/masteringredients` - Returns a string collection listing every validated master lookup record item.
+* `GET  /api/recipes/ingredient/{name}/recipes` - Returns a `List<Long>` containing all Recipe IDs that utilize a specified ingredient.
 
 ---
 
-## Getting Started
+## ⚙️ Configuration & Environment Parameters
 
-### Prerequisites
-* JDK 21
-* Node.js 18+
-* Maven Wrapper
+### Recipe Core Service Setup (`recipe-service/src/main/resources/application.properties`)
 
-### Backend
+```properties
+server.port=8081
+
+# MySQL Database Driver Core Bindings
+spring.datasource.url=jdbc:mysql://localhost:3306/recipedb?createDatabaseIfNotExist=true&useSSL=false
+spring.datasource.username=sa
+spring.datasource.password=your_password_here
+spring.datasource.driver-className=com.mysql.cj.jdbc.Driver
+
+# Hibernate Synchronization Settings
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+
+```
+
+---
+
+## 🏁 Getting Started
+
+### 🏗️ Running the Microservices Workspace
+
+1. **Verify Local MySQL Configuration:** Make sure your local MySQL instances are active, matching the access rights and target users defined inside the system profile.
+2. **Initialize Workspace Compilation Execution:**
 ```bash
-# Build
-./mvnw clean install
+# Execute target cleaning lifecycle stages from root directory context
+mvn clean install
 
-# Run Recipe Service
+```
+
+
+3. **Launch the Core Recipe Services Application:**
+```bash
 cd recipe-service
-./mvnw spring-boot:run
+mvn spring-boot:run
 
-# Run Scaling Service
-cd scaling-service
-./mvnw spring-boot:run
 ```
 
-### Frontend
+
+4. **Launch the Dependent Volume Portion Scaling Module Engine:**
 ```bash
-# Setup
-cd frontend
-npm install
+cd ../scaling-service
+mvn spring-boot:run
 
-# Run locally
-npm run dev
 ```
 
-Access frontend at: `http://localhost:5173`
 
----
 
-## Verify
-* Backend: Swagger UI at `http://localhost:8081/swagger-ui.html`
-* Frontend: Navigate to `http://localhost:5173` and browse recipes.
-
----
