@@ -1,341 +1,361 @@
+
 {
-  "openapi": "3.1.0",
-  "info": {
-    "title": "Recipe Core & Ingredient Orchestrator API",
-    "version": "1.0.0",
-    "description": "Central backend microservice handling the culinary data lifecycle, JPA entity relationships, and master ingredient synchronization logic inside the MySQL schema."
-  },
-  "servers": [
-    {
-      "url": "http://localhost:8081",
-      "description": "Recipe Core Service (Local MySQL Instance)"
-    }
-  ],
-  "paths": {
-    "/api/recipes/create": {
-      "post": {
-        "tags": ["Recipe Management"],
-        "summary": "Create a new recipe and sync ingredients to master list",
-        "operationId": "createRecipe",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RecipeRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "Recipe Created Successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RecipeEntity"
-                },
-                "example": {
-                  "id": 1,
-                  "name": "Ginger Chai",
-                  "servings": 2,
-                  "instructions": "Boil water, add grated ginger and tea leaves, pour milk, simmer, and strain.",
-                  "ingredients": [
-                    {
-                      "id": 101,
-                      "quantity": 2.5,
-                      "unit": "grams",
-                      "masterIngredient": {
-                        "name": "Tea Leaves"
-                      }
-                    },
-                    {
-                      "id": 102,
-                      "quantity": 15.0,
-                      "unit": "grams",
-                      "masterIngredient": {
-                        "name": "Ginger"
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "404": { "$ref": "#/components/responses/404NotFound" },
-          "500": { "$ref": "#/components/responses/500InternalError" }
-        }
-      }
-    },
-    "/api/recipes/getall": {
-      "get": {
-        "tags": ["Recipe Queries"],
-        "summary": "Get all recipes",
-        "operationId": "getAllRecipes",
-        "responses": {
-          "200": {
-            "description": "All Recipes returned",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/RecipeEntity"
-                  }
-                }
-              }
-            }
-          },
-          "404": { "$ref": "#/components/responses/404NotFound" },
-          "500": { "$ref": "#/components/responses/500InternalError" }
-        }
-      }
-    },
-    "/api/recipes/{id}": {
-      "get": {
-        "tags": ["Recipe Queries"],
-        "summary": "Get recipe by id",
-        "operationId": "getRecipeById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Recipe found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RecipeEntity"
-                }
-              }
-            }
-          },
-          "404": { "$ref": "#/components/responses/404NotFound" },
-          "500": { "$ref": "#/components/responses/500InternalError" }
-        }
-      },
-      "patch": {
-        "tags": ["Recipe Management"],
-        "summary": "Update a recipe",
-        "operationId": "updateRecipeById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RecipeRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Recipe updated successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RecipeEntity"
-                }
-              }
-            }
-          },
-          "404": { "$ref": "#/components/responses/404NotFound" },
-          "500": { "$ref": "#/components/responses/500InternalError" }
-        }
-      },
-      "delete": {
-        "tags": ["Recipe Management"],
-        "summary": "Delete recipe by id",
-        "operationId": "deleteRecipe",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Deleted recipe successfully"
-          },
-          "404": { "$ref": "#/components/responses/404NotFound" },
-          "500": { "$ref": "#/components/responses/500InternalError" }
-        }
-      }
-    },
-    "/api/recipes/masteringredients": {
-      "get": {
-        "tags": ["Ingredient Core Dictionary"],
-        "summary": "Get all the master ingredients available",
-        "operationId": "getAllMasterIngredients",
-        "responses": {
-          "200": {
-            "description": "All Master Ingredients returned",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "string",
-                    "example": "ginger"
-                  }
-                }
-              }
-            }
-          },
-          "500": { "$ref": "#/components/responses/500InternalError" }
-        }
-      }
-    },
-    "/api/recipes/ingredient/{name}/recipes": {
-      "get": {
-        "tags": ["Recipe Queries"],
-        "summary": "Get all Recipe IDs that contain a specific master ingredient",
-        "operationId": "getRecipeIdsByIngredient",
-        "parameters": [
-          {
-            "name": "name",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "List of Recipe IDs matching the master ingredient",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "integer",
-                    "format": "int64",
-                    "example": 1
-                  }
-                }
-              }
-            }
-          },
-          "404": { "$ref": "#/components/responses/404NotFound" },
-          "500": { "$ref": "#/components/responses/500InternalError" }
-        }
-      }
-    }
-  },
-  "components": {
-    "responses": {
-      "404NotFound": {
-        "description": "Recipe or resource not found",
-        "content": {
-          "application/json": {
-            "schema": { "$ref": "#/components/schemas/GlobalErrorResponse" },
-            "example": {
-              "timestamp": "2026-06-15T16:24:52Z",
-              "status": 404,
-              "error": "Not Found",
-              "message": "The requested recipe with the given ID could not be found.",
-              "path": "/api/recipes/123"
-            }
-          }
-        }
-      },
-      "500InternalError": {
-        "description": "Internal Server Error during execution",
-        "content": {
-          "application/json": {
-            "schema": { "$ref": "#/components/schemas/GlobalErrorResponse" },
-            "example": {
-              "timestamp": "2026-06-15T16:24:52Z",
-              "status": 500,
-              "error": "Internal Server Error",
-              "message": "An unexpected error occurred while processing the recipe request.",
-              "path": "/api/recipes/create"
-            }
-          }
-        }
-      }
-    },
-    "schemas": {
-      "GlobalErrorResponse": {
-        "type": "object",
-        "properties": {
-          "timestamp": { "type": "string", "format": "date-time" },
-          "status": { "type": "integer" },
-          "error": { "type": "string" },
-          "message": { "type": "string" },
-          "path": { "type": "string" }
-        }
-      },
-      "MasterIngredient": {
-        "type": "object",
-        "required": ["name"],
-        "properties": {
-          "name": {
-            "type": "string",
-            "description": "Unique identifier text for the master dictionary entry",
-            "example": "ginger"
-          }
-        }
-      },
-      "IngredientContext": {
-        "type": "object",
-        "required": ["quantity", "unit", "masterIngredient"],
-        "properties": {
-          "id": { "type": "integer", "format": "int64", "example": 101 },
-          "quantity": { "type": "number", "format": "double", "example": 2.5 },
-          "unit": { "type": "string", "example": "grams" },
-          "masterIngredient": { "$ref": "#/components/schemas/MasterIngredient" }
-        }
-      },
-      "RecipeRequest": {
-        "type": "object",
-        "required": ["name", "servings", "ingredients"],
-        "properties": {
-          "name": { "type": "string", "example": "Ginger Chai" },
-          "servings": { "type": "integer", "format": "int32", "example": 2 },
-          "instructions": { "type": "string", "example": "Boil water, add ginger and tea leaves, add milk." },
-          "ingredients": {
-            "type": "array",
-            "items": { "$ref": "#/components/schemas/IngredientContext" }
-          }
-        }
-      },
-      "RecipeEntity": {
-        "allOf": [
-          {
-            "type": "object",
-            "properties": {
-              "id": { "type": "integer", "format": "int64", "example": 1 }
-            }
-          },
-          { "$ref": "#/components/schemas/RecipeRequest" }
-        ]
-      }
-    }
-  }
+"openapi": "3.1.0",
+"info": {
+"title": "Recipe Core & Ingredient Orchestrator API",
+"version": "1.0.0",
+"description": "Central backend microservice handling the culinary data lifecycle, JPA entity relationships, and master ingredient synchronization logic inside the MySQL schema."
+},
+"servers": [
+{
+"url": "http://localhost:8081",
+"description": "Recipe Core Service (Local MySQL Instance)"
 }
+],
+"paths": {
+"/api/recipes/create": {
+"post": {
+"tags": ["Recipe Management"],
+"summary": "Create a new recipe and sync ingredients to master list",
+"operationId": "createRecipe",
+"requestBody": {
+"required": true,
+"content": {
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/RecipeRequest"
+}
+}
+}
+},
+"responses": {
+"201": {
+"description": "Recipe Created Successfully",
+"content": {
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/RecipeEntity"
+},
+"example": {
+"id": 1,
+"name": "Ginger Chai",
+"servings": 2,
+"instructions": "Boil water, add grated ginger and tea leaves, pour milk, simmer, and strain.",
+"ingredients": [
+{
+"id": 101,
+"quantity": 2.5,
+"unit": "grams",
+"masterIngredient": {
+"name": "Tea Leaves"
+}
+},
+{
+"id": 102,
+"quantity": 15.0,
+"unit": "grams",
+"masterIngredient": {
+"name": "Ginger"
+}
+}
+]
+}
+}
+}
+},
+"404": { "$ref": "#/components/responses/404NotFound" },
+"500": { "$ref": "#/components/responses/500InternalError" }
+}
+}
+},
+"/api/recipes/getall": {
+"get": {
+"tags": ["Recipe Queries"],
+"summary": "Get all recipes",
+"operationId": "getAllRecipes",
+"responses": {
+"200": {
+"description": "All Recipes returned",
+"content": {
+"application/json": {
+"schema": {
+"type": "array",
+"items": {
+"$ref": "#/components/schemas/RecipeEntity"
+}
+},
+"example": [
+{
+"id": 1,
+"name": "Ginger Chai",
+"servings": 2,
+"instructions": "Boil water, add ginger and tea leaves, add milk.",
+"ingredients": [
+{
+"id": 101,
+"quantity": 2.5,
+"unit": "grams",
+"masterIngredient": {
+"name": "Tea Leaves"
+}
+}
+]
+}
+]
+}
+}
+},
+"404": { "$ref": "#/components/responses/404NotFound" },
+"500": { "$ref": "#/components/responses/500InternalError" }
+}
+}
+},
+"/api/recipes/{id}": {
+"get": {
+"tags": ["Recipe Queries"],
+"summary": "Get recipe by id",
+"operationId": "getRecipeById",
+"parameters": [
+{
+"name": "id",
+"in": "path",
+"required": true,
+"schema": {
+"type": "integer",
+"format": "int64"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Recipe found",
+"content": {
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/RecipeEntity"
+}
+}
+}
+},
+"404": { "$ref": "#/components/responses/404NotFound" },
+"500": { "$ref": "#/components/responses/500InternalError" }
+}
+},
+"patch": {
+"tags": ["Recipe Management"],
+"summary": "Update a recipe",
+"operationId": "updateRecipeById",
+"parameters": [
+{
+"name": "id",
+"in": "path",
+"required": true,
+"schema": {
+"type": "integer",
+"format": "int64"
+}
+}
+],
+"requestBody": {
+"required": true,
+"content": {
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/RecipeRequest"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Recipe updated successfully",
+"content": {
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/RecipeEntity"
+}
+}
+}
+},
+"404": { "$ref": "#/components/responses/404NotFound" },
+"500": { "$ref": "#/components/responses/500InternalError" }
+}
+},
+"delete": {
+"tags": ["Recipe Management"],
+"summary": "Delete recipe by id",
+"operationId": "deleteRecipe",
+"parameters": [
+{
+"name": "id",
+"in": "path",
+"required": true,
+"schema": {
+"type": "integer",
+"format": "int64"
+}
+}
+],
+"responses": {
+"204": {
+"description": "Deleted recipe successfully"
+},
+"404": { "$ref": "#/components/responses/404NotFound" },
+"500": { "$ref": "#/components/responses/500InternalError" }
+}
+}
+},
+"/api/recipes/masteringredients": {
+"get": {
+"tags": ["Ingredient Core Dictionary"],
+"summary": "Get all the master ingredients available",
+"operationId": "getAllMasterIngredients",
+"responses": {
+"200": {
+"description": "All Master Ingredients returned",
+"content": {
+"application/json": {
+"schema": {
+"type": "array",
+"items": {
+"type": "string"
+}
+},
+"example": ["tea leaves", "ginger", "milk", "sugar"]
+}
+}
+},
+"500": { "$ref": "#/components/responses/500InternalError" }
+}
+}
+},
+"/api/recipes/ingredient/{name}/recipes": {
+"get": {
+"tags": ["Recipe Queries"],
+"summary": "Get all Recipe IDs that contain a specific master ingredient",
+"operationId": "getRecipeIdsByIngredient",
+"parameters": [
+{
+"name": "name",
+"in": "path",
+"required": true,
+"schema": {
+"type": "string"
+}
+}
+],
+"responses": {
+"200": {
+"description": "List of Recipe IDs matching the master ingredient",
+"content": {
+"application/json": {
+"schema": {
+"type": "array",
+"items": {
+"type": "integer",
+"format": "int64"
+}
+},
+"example": [1, 4, 12]
+}
+}
+},
+"404": { "$ref": "#/components/responses/404NotFound" },
+"500": { "$ref": "#/components/responses/500InternalError" }
+}
+}
+}
+},
+"components": {
+"responses": {
+"404NotFound": {
+"description": "Recipe or resource not found",
+"content": {
+"application/json": {
+"schema": { "$ref": "#/components/schemas/GlobalErrorResponse" },
+"example": {
+"timestamp": "2026-06-15T16:24:52Z",
+"status": 404,
+"error": "Not Found",
+"message": "The requested recipe resource could not be found.",
+"path": "/api/recipes/123"
+}
+}
+}
+},
+"500InternalError": {
+"description": "Internal Server Error during execution",
+"content": {
+"application/json": {
+"schema": { "$ref": "#/components/schemas/GlobalErrorResponse" },
+"example": {
+"timestamp": "2026-06-15T16:24:52Z",
+"status": 500,
+"error": "Internal Server Error",
+"message": "An unexpected error occurred while processing the database transaction.",
+"path": "/api/recipes/create"
+}
+}
+}
+}
+},
+"schemas": {
+"GlobalErrorResponse": {
+"type": "object",
+"properties": {
+"timestamp": { "type": "string", "format": "date-time" },
+"status": { "type": "integer" },
+"error": { "type": "string" },
+"message": { "type": "string" },
+"path": { "type": "string" }
+}
+},
+"MasterIngredient": {
+"type": "object",
+"required": ["name"],
+"properties": {
+"name": {
+"type": "string",
+"description": "Unique name descriptor saved in the master registry.",
+"example": "ginger"
+}
+}
+},
+"IngredientContext": {
+"type": "object",
+"required": ["quantity", "unit", "masterIngredient"],
+"properties": {
+"id": { "type": "integer", "format": "int64", "example": 101 },
+"quantity": { "type": "number", "format": "double", "example": 2.5 },
+"unit": { "type": "string", "example": "grams" },
+"masterIngredient": { "$ref": "#/components/schemas/MasterIngredient" }
+}
+},
+"RecipeRequest": {
+"type": "object",
+"required": ["name", "servings", "ingredients"],
+"properties": {
+"name": { "type": "string", "example": "Ginger Chai" },
+"servings": { "type": "integer", "format": "int32", "example": 2 },
+"instructions": { "type": "string", "example": "Boil water, add ginger and tea leaves, add milk." },
+"ingredients": {
+"type": "array",
+"items": { "$ref": "#/components/schemas/IngredientContext" }
+}
+}
+},
+"RecipeEntity": {
+"allOf": [
+{
+"type": "object",
+"properties": {
+"id": { "type": "integer", "format": "int64", "example": 1 }
+}
+},
+{ "$ref": "#/components/schemas/RecipeRequest" }
+]
+}
+}
+}
+}
+
