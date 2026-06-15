@@ -32,7 +32,7 @@
           "404": {
             "description": "Recipe not found",
             "content": {
-              "*/*": {
+              "application/json": {
                 "example": {
                   "timestamp": "2026-06-15T16:24:52Z",
                   "status": 404,
@@ -46,7 +46,7 @@
           "500": {
             "description": "Internal Server error",
             "content": {
-              "*/*": {
+              "application/json": {
                 "example": {
                   "timestamp": "2026-06-15T16:24:52Z",
                   "status": 500,
@@ -60,13 +60,25 @@
           "201": {
             "description": "Recipe Created",
             "content": {
-              "*/*": {
+              "application/json": {
                 "example": {
-                  "timestamp": "2026-06-15T16:24:52Z",
-                  "status": 500,
-                  "error": "Internal Server Error",
-                  "message": "An unexpected error occurred while processing the recipe request.",
-                  "path": "/api/v1/recipes/123"
+                  "id": 0,
+                  "servings": 0,
+                  "name": "string",
+                  "instructions": "string",
+                  "ingredients": [
+                    {
+                      "id": 0,
+                      "quantity": 0.1,
+                      "unit": "string",
+                      "masterIngredient": {
+                        "name": "string"
+                      },
+                      "recipe": {
+
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -96,7 +108,7 @@
           "404": {
             "description": "Recipe not found",
             "content": {
-              "*/*": {
+              "application/json": {
                 "example": {
                   "timestamp": "2026-06-15T16:24:52Z",
                   "status": 404,
@@ -110,7 +122,7 @@
           "500": {
             "description": "Internal Server error",
             "content": {
-              "*/*": {
+              "application/json": {
                 "example": {
                   "timestamp": "2026-06-15T16:24:52Z",
                   "status": 500,
@@ -124,7 +136,7 @@
           "200": {
             "description": "Recipe found",
             "content": {
-              "*/*": {
+              "application/json": {
                 "example": {
                   "id": 0,
                   "servings": 0,
@@ -170,7 +182,7 @@
           "404": {
             "description": "Recipe not found",
             "content": {
-              "*/*": {
+              "application/json": {
                 "example": {
                   "timestamp": "2026-06-15T16:24:52Z",
                   "status": 404,
@@ -184,7 +196,7 @@
           "500": {
             "description": "Internal Server error",
             "content": {
-              "*/*": {
+              "application/json": {
                 "example": {
                   "timestamp": "2026-06-15T16:24:52Z",
                   "status": 500,
@@ -198,7 +210,7 @@
           "204": {
             "description": "Deleted recipe successfully",
             "content": {
-              "*/*": {
+              "application/json": {
                 "example": {
                   "id": 0,
                   "servings": 0,
@@ -254,7 +266,7 @@
           "404": {
             "description": "Recipe not found",
             "content": {
-              "*/*": {
+              "application/json": {
                 "example": {
                   "timestamp": "2026-06-15T16:24:52Z",
                   "status": 404,
@@ -268,7 +280,7 @@
           "500": {
             "description": "Internal Server error",
             "content": {
-              "*/*": {
+              "application/json": {
                 "example": {
                   "timestamp": "2026-06-15T16:24:52Z",
                   "status": 500,
@@ -319,7 +331,7 @@
           "404": {
             "description": "Recipe not found",
             "content": {
-              "*/*": {
+              "application/json": {
                 "example": {
                   "timestamp": "2026-06-15T16:24:52Z",
                   "status": 404,
@@ -333,56 +345,7 @@
           "500": {
             "description": "Internal Server error",
             "content": {
-              "*/*": {
-                "example": {
-                  "timestamp": "2026-06-15T16:24:52Z",
-                  "status": 500,
-                  "error": "Internal Server Error",
-                  "message": "An unexpected error occurred while processing the recipe request.",
-                  "path": "/api/v1/recipes/123"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/recipes/ingredient/{name}/recipes": {
-      "get": {
-        "tags": [
-          "recipe-controller"
-        ],
-        "summary": "Get all Recipe IDs that contain a specific master ingredient",
-        "operationId": "getRecipeIdsByIngredient",
-        "parameters": [
-          {
-            "name": "name",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "404": {
-            "description": "Recipe not found",
-            "content": {
-              "*/*": {
-                "example": {
-                  "timestamp": "2026-06-15T16:24:52Z",
-                  "status": 404,
-                  "error": "Not Found",
-                  "message": "The requested recipe with the given ID could not be found.",
-                  "path": "/api/v1/recipes/123"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server error",
-            "content": {
-              "*/*": {
+              "application/json": {
                 "example": {
                   "timestamp": "2026-06-15T16:24:52Z",
                   "status": 500,
@@ -422,18 +385,28 @@
         }
       }
     },
-    "/api/recipes/getall": {
+    "/api/recipes/ingredient/{name}/recipes": {
       "get": {
         "tags": [
           "recipe-controller"
         ],
-        "summary": "Get all recipes",
-        "operationId": "getAllRecipes",
+        "summary": "Get all Recipe IDs that contain a specific master ingredient",
+        "operationId": "getRecipeIdsByIngredient",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "404": {
             "description": "Recipe not found",
             "content": {
-              "*/*": {
+              "application/json": {
                 "example": {
                   "timestamp": "2026-06-15T16:24:52Z",
                   "status": 404,
@@ -447,7 +420,7 @@
           "500": {
             "description": "Internal Server error",
             "content": {
-              "*/*": {
+              "application/json": {
                 "example": {
                   "timestamp": "2026-06-15T16:24:52Z",
                   "status": 500,
@@ -461,7 +434,54 @@
           "200": {
             "description": "All Recipes returned",
             "content": {
-              "*/*": {
+              "application/json": {
+                "example": "{\n{\n  \"id\": 0,\n  \"servings\": 0,\n  \"name\": \"string\",\n  \"instructions\": \"string\",\n  \"ingredients\": [\n    {\n      \"id\": 0,\n      \"quantity\": 0.1,\n      \"unit\": \"string\",\n      \"masterIngredient\": {\n        \"name\": \"string\"\n      },\n      \"recipe\": {}\n    }\n  ]\n},\n{\n  \"id\": 1,\n  \"servings\": 0,\n  \"name\": \"string\",\n  \"instructions\": \"string\",\n  \"ingredients\": [\n    {\n      \"id\": 0,\n      \"quantity\": 0.1,\n      \"unit\": \"string\",\n      \"masterIngredient\": {\n        \"name\": \"string\"\n      },\n      \"recipe\": {}\n    }\n  ]\n}\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/recipes/getall": {
+      "get": {
+        "tags": [
+          "recipe-controller"
+        ],
+        "summary": "Get all recipes",
+        "operationId": "getAllRecipes",
+        "responses": {
+          "404": {
+            "description": "Recipe not found",
+            "content": {
+              "application/json": {
+                "example": {
+                  "timestamp": "2026-06-15T16:24:52Z",
+                  "status": 404,
+                  "error": "Not Found",
+                  "message": "The requested recipe with the given ID could not be found.",
+                  "path": "/api/v1/recipes/123"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server error",
+            "content": {
+              "application/json": {
+                "example": {
+                  "timestamp": "2026-06-15T16:24:52Z",
+                  "status": 500,
+                  "error": "Internal Server Error",
+                  "message": "An unexpected error occurred while processing the recipe request.",
+                  "path": "/api/v1/recipes/123"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "All Recipes returned",
+            "content": {
+              "application/json": {
                 "example": "{\n{\n  \"id\": 0,\n  \"servings\": 0,\n  \"name\": \"string\",\n  \"instructions\": \"string\",\n  \"ingredients\": [\n    {\n      \"id\": 0,\n      \"quantity\": 0.1,\n      \"unit\": \"string\",\n      \"masterIngredient\": {\n        \"name\": \"string\"\n      },\n      \"recipe\": {}\n    }\n  ]\n},\n{\n  \"id\": 1,\n  \"servings\": 0,\n  \"name\": \"string\",\n  \"instructions\": \"string\",\n  \"ingredients\": [\n    {\n      \"id\": 0,\n      \"quantity\": 0.1,\n      \"unit\": \"string\",\n      \"masterIngredient\": {\n        \"name\": \"string\"\n      },\n      \"recipe\": {}\n    }\n  ]\n}\n"
               }
             }
