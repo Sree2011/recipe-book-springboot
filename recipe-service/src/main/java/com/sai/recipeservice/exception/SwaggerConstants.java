@@ -20,4 +20,61 @@ public class SwaggerConstants {
           "path": "/api/v1/recipes/123"
         }
         """;
+    public static final String RECIPE200 = """
+            {
+              "id": 0,
+              "servings": 0,
+              "name": "string",
+              "instructions": "string",
+              "ingredients": [
+                {
+                  "id": 0,
+                  "quantity": 0.1,
+                  "unit": "string",
+                  "masterIngredient": {
+                    "name": "string"
+                  },
+                  "recipe": {}
+                }
+              ]
+            }
+            """;
+
+    public static final String ALLRECIPES = """
+            {
+            {
+              "id": 0,
+              "servings": 0,
+              "name": "string",
+              "instructions": "string",
+              "ingredients": [
+                {
+                  "id": 0,
+                  "quantity": 0.1,
+                  "unit": "string",
+                  "masterIngredient": {
+                    "name": "string"
+                  },
+                  "recipe": {}
+                }
+              ]
+            },
+            {
+              "id": 1,
+              "servings": 0,
+              "name": "string",
+              "instructions": "string",
+              "ingredients": [
+                {
+                  "id": 0,
+                  "quantity": 0.1,
+                  "unit": "string",
+                  "masterIngredient": {
+                    "name": "string"
+                  },
+                  "recipe": {}
+                }
+              ]
+            }
+            """;
 }
