@@ -67,7 +67,7 @@ flowchart LR
 
 ## Docs
 [Api docs](./api.html)
-
+[Javadoc](./javadoc/index.html)
 ### Backend
 * **Create Recipes**: Add new recipes with detailed instructions and ingredient quantities.
 * **Master Ingredient Sync**: Tracks unique ingredients in a `master_ingredients` table.
