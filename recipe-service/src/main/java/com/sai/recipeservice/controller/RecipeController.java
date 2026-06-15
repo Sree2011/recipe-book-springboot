@@ -26,7 +26,7 @@ public class RecipeController {
 
     @PostMapping("/create")
     @Operation(summary = "Create a new recipe and sync ingredients to master list")
-    @ApiResponse(responseCode = "201",description = "Recipe Created", content =@Content(examples=@ExampleObject(value=RECIPE500)))
+    @ApiResponse(responseCode = "201",description = "Recipe Created", content =@Content(examples=@ExampleObject(value=RECIPE200)))
     public ResponseEntity<Recipe> createRecipe(@RequestBody Recipe recipe) {
         Recipe recipe_out = service.createRecipe(recipe);
         return ResponseEntity.status(HttpStatus.CREATED).body(recipe_out);
@@ -64,7 +64,7 @@ public class RecipeController {
      */
     @GetMapping("/ingredient/{name}/recipes")
     @Operation(summary = "Get all Recipe IDs that contain a specific master ingredient")
-    @ApiResponse(responseCode = "200",description = "All Recipes returned", content =@Content(examples=@ExampleObject(value=RECIPE200)))
+    @ApiResponse(responseCode = "200",description = "All Recipes returned", content =@Content(examples=@ExampleObject(value=ALLRECIPES)))
     public ResponseEntity<List<Long>> getRecipeIdsByIngredient(@PathVariable String name) {
         List<Long> recipeIds = service.getRecipeIdsByIngredient(name.toLowerCase());
         return ResponseEntity.ok(recipeIds);
