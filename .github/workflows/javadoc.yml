@@ -35,6 +35,6 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           # FIXED PATH: Points cleanly into the module target directory
-          folder: recipe-service/target/site/apidocs
+          folder: recipe-service/target/reports/apidocs
           branch: main
           target-folder: javadoc
