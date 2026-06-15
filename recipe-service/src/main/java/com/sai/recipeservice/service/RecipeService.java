@@ -3,6 +3,7 @@ package com.sai.recipeservice.service;
 import com.sai.recipeservice.entity.Ingredient;
 import com.sai.recipeservice.entity.MasterIngredient;
 import com.sai.recipeservice.entity.Recipe;
+import com.sai.recipeservice.exception.RecipeNotFoundException;
 import com.sai.recipeservice.repository.MasterIngredientRepository;
 import com.sai.recipeservice.repository.RecipeRepository;
 import jakarta.transaction.Transactional;
@@ -32,7 +33,7 @@ public class RecipeService {
     public Recipe getRecipeById(Long id) {
         // Changed from getReferenceById to findById for better error handling
         return repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Recipe not found with id: " + id));
+                .orElseThrow(() -> new RecipeNotFoundException(id));
     }
 
     @Transactional
@@ -155,7 +156,7 @@ public class RecipeService {
 
                         return repository.save(existingRecipe);
                     })
-                    .orElseThrow(() -> new RuntimeException("Recipe not found with id " + id));
+                    .orElseThrow(() -> new RecipeNotFoundException(id));
         }
     }
 
