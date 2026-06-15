@@ -59,6 +59,9 @@ flowchart LR
 
 ## Features
 
+## Docs
+[Api docs](./api.html)
+
 ### Backend
 * **Create Recipes**: Add new recipes with detailed instructions and ingredient quantities.
 * **Master Ingredient Sync**: Tracks unique ingredients in a `master_ingredients` table.
