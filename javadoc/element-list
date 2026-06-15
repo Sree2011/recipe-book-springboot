@@ -1,0 +1,8 @@
+com.sai.recipeservice
+com.sai.recipeservice.config
+com.sai.recipeservice.controller
+com.sai.recipeservice.dto
+com.sai.recipeservice.entity
+com.sai.recipeservice.exception
+com.sai.recipeservice.repository
+com.sai.recipeservice.service
