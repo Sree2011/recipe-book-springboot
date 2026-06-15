@@ -28,6 +28,35 @@ The system consists of three primary components:
 
 ---
 
+## Architecture
+
+```mermaid
+
+flowchart LR
+
+    User["Client<br/>(Postman / Swagger UI)"]
+
+    subgraph RS["Recipe Service (8081)"]
+        RecipeController["REST Controllers"]
+        RecipeService["Business Logic"]
+        H2["H2 Database"]
+        RecipeController --> RecipeService
+        RecipeService --> H2
+    end
+
+    subgraph SS["Scaling Service (8082)"]
+        ScalingController["REST Controllers"]
+        ScalingService["Scaling Logic"]
+        ScalingController --> ScalingService
+    end
+
+    User --> RecipeController
+    User --> ScaleController
+
+    ScaleService -. OpenFeign .-> RecipeController
+
+```
+
 ## Features
 
 ### Backend
