@@ -7,7 +7,7 @@
 
 ---
 
-```markdown
+
 # Recipe Book Microservices Workspace
 
 [![Java Version](https://img.shields.io/badge/Java-21-orange.svg)](https://jdk.java.net/21/)
