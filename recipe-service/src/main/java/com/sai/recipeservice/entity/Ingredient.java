@@ -18,7 +18,7 @@ public class Ingredient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private double quantity;
+    private Double quantity;
     private String unit;
 
     // Corrected: Mapping to the MasterIngredient entity instead of a String
@@ -32,7 +32,7 @@ public class Ingredient {
     private Recipe recipe;
 
     // Updated Constructor to accept the MasterIngredient object
-    public Ingredient(MasterIngredient masterIngredient, double quantity, String unit) {
+    public Ingredient(MasterIngredient masterIngredient, Double quantity, String unit) {
         this.masterIngredient = masterIngredient;
         this.quantity = quantity;
         this.unit = unit;

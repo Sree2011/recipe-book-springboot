@@ -18,7 +18,7 @@ public class Recipe {
     private Long id;
 
 
-    private int servings;
+    private Integer servings;
     private String name;
     private String instructions;
 

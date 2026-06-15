@@ -11,9 +11,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
-import static org.hibernate.Hibernate.map;
+
 
 @Service
 public class RecipeService {
@@ -103,4 +104,65 @@ public class RecipeService {
         return names;
 
     }
-}
+
+        public Recipe updateRecipe(Long id, Recipe updatedRecipeDto) {
+            return repository.findById(id)
+                    .map(existingRecipe -> {
+                        // Update basic fields if provided
+                        if (updatedRecipeDto.getName() != null && !updatedRecipeDto.getName().isBlank()) {
+                            existingRecipe.setName(updatedRecipeDto.getName());
+                        }
+                        if (updatedRecipeDto.getServings() != null) {
+                            existingRecipe.setServings(updatedRecipeDto.getServings());
+                        }
+                        if (updatedRecipeDto.getInstructions() != null && !updatedRecipeDto.getInstructions().isBlank()) {
+                            existingRecipe.setInstructions(updatedRecipeDto.getInstructions());
+                        }
+
+                        // ✅ Mutate the existing list instead of replacing it
+                        List<Ingredient> ingredients = existingRecipe.getIngredients();
+
+                        if (updatedRecipeDto.getIngredients() != null && !updatedRecipeDto.getIngredients().isEmpty()) {
+                            for (Ingredient ingDto : updatedRecipeDto.getIngredients()) {
+                                // Ensure master ingredient exists
+                                MasterIngredient master = masterRepo
+                                        .findByName(ingDto.getMasterIngredient().getName())
+                                        .orElseGet(() -> masterRepo.save(
+                                                new MasterIngredient(ingDto.getMasterIngredient().getName())
+                                        ));
+
+                                // Check if ingredient already exists in recipe
+                                Optional<Ingredient> existingIngOpt = ingredients.stream()
+                                        .filter(e -> e.getMasterIngredient().getName().equalsIgnoreCase(master.getName()))
+                                        .findFirst();
+
+                                if (existingIngOpt.isPresent()) {
+                                    // Update existing ingredient
+                                    Ingredient existingIng = existingIngOpt.get();
+                                    if (ingDto.getQuantity() != null) existingIng.setQuantity(ingDto.getQuantity());
+                                    if (ingDto.getUnit() != null) existingIng.setUnit(ingDto.getUnit());
+                                } else {
+                                    // Add new ingredient
+                                    Ingredient newIng = new Ingredient();
+                                    newIng.setMasterIngredient(master);
+                                    newIng.setQuantity(ingDto.getQuantity());
+                                    newIng.setUnit(ingDto.getUnit());
+                                    newIng.setRecipe(existingRecipe); // maintain bidirectional link
+                                    ingredients.add(newIng);
+                                }
+                            }
+                        }
+
+                        return repository.save(existingRecipe);
+                    })
+                    .orElseThrow(() -> new RuntimeException("Recipe not found with id " + id));
+        }
+    }
+
+
+
+
+
+
+
+

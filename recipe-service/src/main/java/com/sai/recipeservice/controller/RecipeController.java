@@ -57,6 +57,13 @@ public class RecipeController {
         return ResponseEntity.ok(recipeIds);
     }
 
+    @PatchMapping("/{id}")
+    @Operation(summary = "Update a recipe")
+    public ResponseEntity<Recipe> updateRecipeById(@PathVariable Long id, @RequestBody Recipe recipeu){
+        Recipe r = service.updateRecipe(id,recipeu);
+        return ResponseEntity.ok(r);
+    }
+
     @GetMapping("/masteringredients")
     @Operation(summary = "Get all the master ingredients available")
     public ResponseEntity<List<String>> getAllMasterIngredients() {
