@@ -198,7 +198,14 @@
 ],
 "responses": {
 "204": {
-"$ref":"#/components/schemas/RecipeEntity"
+  "description": "Recipe deleted successfully",
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "#/components/schemas/RecipeEntity"
+      }
+    }
+  }
 },
 "404": { "$ref": "#/components/responses/404NotFound" },
 "500": { "$ref": "#/components/responses/500InternalError" }
