@@ -1,0 +1,13 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "Recipe Vault API",
+  "openapi": "docs.json",
+  "navigation": [
+    {
+      "group": "API Reference",
+      "pages": [
+        "openapi"
+      ]
+    }
+  ]
+}
