@@ -1,18 +1,18 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Recipe Vault Service API",
+    "title": "Recipe Core & Ingredient Orchestrator API",
     "version": "1.0.0",
-    "description": "Architectural API contract handling relational ingredients and dynamic scaling configurations."
+    "description": "Central backend microservice handling the culinary data lifecycle, JPA entity relationships, and master ingredient synchronization logic inside the MySQL schema."
   },
   "servers": [
     {
       "url": "http://localhost:8081",
-      "description": "Local Development Server"
+      "description": "Recipe Core Service (Local MySQL Instance)"
     }
   ],
   "paths": {
-    "/api/recipes": {
+    "/api/recipes/create": {
       "post": {
         "tags": ["Recipe Management"],
         "summary": "Create a new recipe and sync ingredients to master list",
@@ -29,11 +29,35 @@
         },
         "responses": {
           "201": {
-            "description": "Recipe created and synchronized successfully.",
+            "description": "Recipe Created Successfully",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RecipeResponse"
+                  "$ref": "#/components/schemas/RecipeEntity"
+                },
+                "example": {
+                  "id": 1,
+                  "name": "Ginger Chai",
+                  "servings": 2,
+                  "instructions": "Boil water, add grated ginger and tea leaves, pour milk, simmer, and strain.",
+                  "ingredients": [
+                    {
+                      "id": 101,
+                      "quantity": 2.5,
+                      "unit": "grams",
+                      "masterIngredient": {
+                        "name": "Tea Leaves"
+                      }
+                    },
+                    {
+                      "id": 102,
+                      "quantity": 15.0,
+                      "unit": "grams",
+                      "masterIngredient": {
+                        "name": "Ginger"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -41,20 +65,22 @@
           "404": { "$ref": "#/components/responses/404NotFound" },
           "500": { "$ref": "#/components/responses/500InternalError" }
         }
-      },
+      }
+    },
+    "/api/recipes/getall": {
       "get": {
         "tags": ["Recipe Queries"],
         "summary": "Get all recipes",
         "operationId": "getAllRecipes",
         "responses": {
           "200": {
-            "description": "List of all stored recipes returned successfully.",
+            "description": "All Recipes returned",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/RecipeResponse"
+                    "$ref": "#/components/schemas/RecipeEntity"
                   }
                 }
               }
@@ -68,23 +94,26 @@
     "/api/recipes/{id}": {
       "get": {
         "tags": ["Recipe Queries"],
-        "summary": "Get recipe by its unique database ID",
+        "summary": "Get recipe by id",
         "operationId": "getRecipeById",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "schema": { "type": "integer", "format": "int64" }
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "Recipe located.",
+            "description": "Recipe found",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RecipeResponse"
+                  "$ref": "#/components/schemas/RecipeEntity"
                 }
               }
             }
@@ -95,14 +124,17 @@
       },
       "patch": {
         "tags": ["Recipe Management"],
-        "summary": "Update an existing recipe entity",
+        "summary": "Update a recipe",
         "operationId": "updateRecipeById",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "schema": { "type": "integer", "format": "int64" }
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
           }
         ],
         "requestBody": {
@@ -117,11 +149,11 @@
         },
         "responses": {
           "200": {
-            "description": "Recipe updated successfully.",
+            "description": "Recipe updated successfully",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RecipeResponse"
+                  "$ref": "#/components/schemas/RecipeEntity"
                 }
               }
             }
@@ -139,11 +171,16 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "schema": { "type": "integer", "format": "int64" }
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
           }
         ],
         "responses": {
-          "204": { "description": "Deleted recipe successfully." },
+          "204": {
+            "description": "Deleted recipe successfully"
+          },
           "404": { "$ref": "#/components/responses/404NotFound" },
           "500": { "$ref": "#/components/responses/500InternalError" }
         }
@@ -152,17 +189,18 @@
     "/api/recipes/masteringredients": {
       "get": {
         "tags": ["Ingredient Core Dictionary"],
-        "summary": "Get all master global inventory ingredients available",
+        "summary": "Get all the master ingredients available",
         "operationId": "getAllMasterIngredients",
         "responses": {
           "200": {
-            "description": "Master list inventory schemas array.",
+            "description": "All Master Ingredients returned",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/MasterIngredient"
+                    "type": "string",
+                    "example": "ginger"
                   }
                 }
               }
@@ -175,31 +213,36 @@
     "/api/recipes/ingredient/{name}/recipes": {
       "get": {
         "tags": ["Recipe Queries"],
-        "summary": "Get all recipes that contain a specific master ingredient",
+        "summary": "Get all Recipe IDs that contain a specific master ingredient",
         "operationId": "getRecipeIdsByIngredient",
         "parameters": [
           {
             "name": "name",
             "in": "path",
             "required": true,
-            "schema": { "type": "string" }
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "Array of filtered recipes matching selection requirements.",
+            "description": "List of Recipe IDs matching the master ingredient",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/RecipeResponse"
+                    "type": "integer",
+                    "format": "int64",
+                    "example": 1
                   }
                 }
               }
             }
           },
-          "404": { "$ref": "#/components/responses/404NotFound" }
+          "404": { "$ref": "#/components/responses/404NotFound" },
+          "500": { "$ref": "#/components/responses/500InternalError" }
         }
       }
     }
@@ -207,49 +250,43 @@
   "components": {
     "responses": {
       "404NotFound": {
-        "description": "Resource not found",
+        "description": "Recipe or resource not found",
         "content": {
           "application/json": {
-            "schema": { "$ref": "#/components/schemas/GlobalErrorPayload" },
+            "schema": { "$ref": "#/components/schemas/GlobalErrorResponse" },
             "example": {
               "timestamp": "2026-06-15T16:24:52Z",
               "status": 404,
               "error": "Not Found",
-              "message": "The requested recipe resource with the given parameters could not be found.",
+              "message": "The requested recipe with the given ID could not be found.",
               "path": "/api/recipes/123"
             }
           }
         }
       },
       "500InternalError": {
-        "description": "Internal Server Error Transaction Interruption",
+        "description": "Internal Server Error during execution",
         "content": {
           "application/json": {
-            "schema": { "$ref": "#/components/schemas/GlobalErrorPayload" },
+            "schema": { "$ref": "#/components/schemas/GlobalErrorResponse" },
             "example": {
               "timestamp": "2026-06-15T16:24:52Z",
               "status": 500,
               "error": "Internal Server Error",
-              "message": "An unexpected exception occurred during database sync operations.",
-              "path": "/api/recipes"
+              "message": "An unexpected error occurred while processing the recipe request.",
+              "path": "/api/recipes/create"
             }
           }
         }
       }
     },
     "schemas": {
-      "BaseIdentity": {
-        "type": "object",
-        "properties": {
-          "id": { "type": "integer", "format": "int64", "example": 1 }
-        }
-      },
-      "GlobalErrorPayload": {
+      "GlobalErrorResponse": {
         "type": "object",
         "properties": {
           "timestamp": { "type": "string", "format": "date-time" },
-          "status": { "type": "integer", "example": 404 },
-          "error": { "type": "string", "example": "Not Found" },
+          "status": { "type": "integer" },
+          "error": { "type": "string" },
           "message": { "type": "string" },
           "path": { "type": "string" }
         }
@@ -258,15 +295,20 @@
         "type": "object",
         "required": ["name"],
         "properties": {
-          "name": { "type": "string", "example": "Vanilla Extract" }
+          "name": {
+            "type": "string",
+            "description": "Unique identifier text for the master dictionary entry",
+            "example": "ginger"
+          }
         }
       },
       "IngredientContext": {
         "type": "object",
         "required": ["quantity", "unit", "masterIngredient"],
         "properties": {
+          "id": { "type": "integer", "format": "int64", "example": 101 },
           "quantity": { "type": "number", "format": "double", "example": 2.5 },
-          "unit": { "type": "string", "example": "teaspoon" },
+          "unit": { "type": "string", "example": "grams" },
           "masterIngredient": { "$ref": "#/components/schemas/MasterIngredient" }
         }
       },
@@ -274,18 +316,23 @@
         "type": "object",
         "required": ["name", "servings", "ingredients"],
         "properties": {
-          "name": { "type": "string", "example": "Classic Waffles" },
-          "servings": { "type": "integer", "format": "int32", "example": 4 },
-          "instructions": { "type": "string", "example": "Whisk ingredients and bake in waffle iron." },
+          "name": { "type": "string", "example": "Ginger Chai" },
+          "servings": { "type": "integer", "format": "int32", "example": 2 },
+          "instructions": { "type": "string", "example": "Boil water, add ginger and tea leaves, add milk." },
           "ingredients": {
             "type": "array",
             "items": { "$ref": "#/components/schemas/IngredientContext" }
           }
         }
       },
-      "RecipeResponse": {
+      "RecipeEntity": {
         "allOf": [
-          { "$ref": "#/components/schemas/BaseIdentity" },
+          {
+            "type": "object",
+            "properties": {
+              "id": { "type": "integer", "format": "int64", "example": 1 }
+            }
+          },
           { "$ref": "#/components/schemas/RecipeRequest" }
         ]
       }
