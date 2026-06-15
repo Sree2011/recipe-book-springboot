@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.Operation;
@@ -17,8 +18,9 @@ import static com.sai.recipeservice.exception.SwaggerConstants.*;
 
 @RestController
 @RequestMapping("/api/recipes")
-@ApiResponse(responseCode = "404",description = "Recipe not found", content = @Content(examples=@ExampleObject(value=RECIPE404)))
-@ApiResponse(responseCode = "500",description = "Internal Server error", content =@Content(examples=@ExampleObject(value=RECIPE500)))
+@ApiResponse(responseCode = "404",description = "Recipe not found", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
+examples=@ExampleObject(value=RECIPE404)))
+@ApiResponse(responseCode = "500",description = "Internal Server error", content =@Content(mediaType = MediaType.APPLICATION_JSON_VALUE,examples=@ExampleObject(value=RECIPE500)))
 public class RecipeController {
 
     @Autowired
@@ -26,7 +28,7 @@ public class RecipeController {
 
     @PostMapping("/create")
     @Operation(summary = "Create a new recipe and sync ingredients to master list")
-    @ApiResponse(responseCode = "201",description = "Recipe Created", content =@Content(examples=@ExampleObject(value=RECIPE200)))
+    @ApiResponse(responseCode = "201",description = "Recipe Created", content =@Content(mediaType = MediaType.APPLICATION_JSON_VALUE, examples=@ExampleObject(value=RECIPE200)))
     public ResponseEntity<Recipe> createRecipe(@RequestBody Recipe recipe) {
         Recipe recipe_out = service.createRecipe(recipe);
         return ResponseEntity.status(HttpStatus.CREATED).body(recipe_out);
@@ -34,7 +36,7 @@ public class RecipeController {
 
     @GetMapping("/getall")
     @Operation(summary = "Get all recipes")
-    @ApiResponse(responseCode = "200",description = "All Recipes returned", content =@Content(examples=@ExampleObject(value=ALLRECIPES)))
+    @ApiResponse(responseCode = "200",description = "All Recipes returned", content =@Content(mediaType = MediaType.APPLICATION_JSON_VALUE,examples=@ExampleObject(value=ALLRECIPES)))
     public ResponseEntity<List<Recipe>> getAllRecipes() {
         List<Recipe> all_recipes = service.getAllRecipes();
         return ResponseEntity.ok(all_recipes);
@@ -43,7 +45,7 @@ public class RecipeController {
     // Standardized to use PathVariable for cleaner URLs
     @GetMapping("/{id}")
     @Operation(summary = "Get recipe by id")
-    @ApiResponse(responseCode = "200",description = "Recipe found", content =@Content(examples=@ExampleObject(value=RECIPE200)))
+    @ApiResponse(responseCode = "200",description = "Recipe found", content =@Content(mediaType = MediaType.APPLICATION_JSON_VALUE,examples=@ExampleObject(value=RECIPE200)))
     public ResponseEntity<Recipe> getRecipeById(@PathVariable Long id) {
         Recipe byId = service.getRecipeById(id);
         return ResponseEntity.ok(byId);
@@ -52,7 +54,7 @@ public class RecipeController {
     // Standardized to use PathVariable
     @DeleteMapping("/{id}")
     @Operation(summary = "Delete recipe by id")
-    @ApiResponse(responseCode = "204",description = "Deleted recipe successfully", content =@Content(examples=@ExampleObject(value=RECIPE200)))
+    @ApiResponse(responseCode = "204",description = "Deleted recipe successfully", content =@Content(mediaType = MediaType.APPLICATION_JSON_VALUE,examples=@ExampleObject(value=RECIPE200)))
     public ResponseEntity<String> deleteRecipe(@PathVariable Long id) {
         String message = service.deleteRecipe(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body(message);
@@ -64,7 +66,7 @@ public class RecipeController {
      */
     @GetMapping("/ingredient/{name}/recipes")
     @Operation(summary = "Get all Recipe IDs that contain a specific master ingredient")
-    @ApiResponse(responseCode = "200",description = "All Recipes returned", content =@Content(examples=@ExampleObject(value=ALLRECIPES)))
+    @ApiResponse(responseCode = "200",description = "All Recipes returned", content =@Content(mediaType = MediaType.APPLICATION_JSON_VALUE,examples=@ExampleObject(value=ALLRECIPES)))
     public ResponseEntity<List<Long>> getRecipeIdsByIngredient(@PathVariable String name) {
         List<Long> recipeIds = service.getRecipeIdsByIngredient(name.toLowerCase());
         return ResponseEntity.ok(recipeIds);
