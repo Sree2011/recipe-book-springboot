@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>4.0.6</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
+		<relativePath/> </parent>
 	<groupId>com.sai</groupId>
 	<artifactId>recipebook</artifactId>
 	<version>1.0</version>
@@ -19,7 +18,7 @@
 	<name>ChefScale: Smart Recipe and Ingredient Manager</name>
 	<description>
 		A full-stack Spring Boot application designed to handle recipe storage and automated portion scaling.
-		It utilizes an H2 in-memory database for rapid development and implements a "Master Ingredient" logic to track
+		It utilizes a MySQL database for persistent storage and implements a "Master Ingredient" logic to track
 		ingredient occurrences across different recipes efficiently.</description>
 	<url/>
 	<licenses>
@@ -34,11 +33,8 @@
 	</developers>
 	<scm>
 		<connection>scm:git:https://github.com/sree2011/recipe-book-springboot.git</connection>
-
 		<developerConnection>scm:git:ssh://github.com:sree2011/recipe-book-springboot.git</developerConnection>
-
 		<tag>HEAD</tag>
-
 		<url>https://github.com/sree2011/recipe-book-springboot</url>
 	</scm>
 	<properties>
@@ -58,16 +54,12 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-web</artifactId>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-web</artifactId>
-				<version>4.0.6-SNAPSHOT</version>
-			</dependency>
 
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-web</artifactId>
+				<version>4.0.0</version>
+			</dependency>
 
 			<dependency>
 				<groupId>org.springdoc</groupId>
@@ -83,12 +75,6 @@
 			</dependency>
 
 			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-h2console</artifactId>
-			</dependency>
-
-
-			<dependency>
 				<groupId>org.projectlombok</groupId>
 				<artifactId>lombok</artifactId>
 				<version>${lombok.version}</version>
@@ -102,15 +88,11 @@
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
-
-
 	</dependencies>
 
 	<build>
@@ -185,5 +167,5 @@
 			</releases>
 		</pluginRepository>
 	</pluginRepositories>
-
 </project>
+
