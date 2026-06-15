@@ -29,12 +29,30 @@
           "required": true
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "404": {
+            "description": "not found",
             "content": {
               "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/Recipe"
+                "example": {
+                  "timestamp": "2026-06-15T16:24:52Z",
+                  "status": 404,
+                  "error": "Not Found",
+                  "message": "The requested recipe with the given ID could not be found.",
+                  "path": "/api/v1/recipes/123"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "not found",
+            "content": {
+              "*/*": {
+                "example": {
+                  "timestamp": "2026-06-15T16:24:52Z",
+                  "status": 500,
+                  "error": "Internal Server Error",
+                  "message": "An unexpected error occurred while processing the recipe request.",
+                  "path": "/api/v1/recipes/123"
                 }
               }
             }
@@ -61,12 +79,30 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK",
+          "404": {
+            "description": "not found",
             "content": {
               "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/Recipe"
+                "example": {
+                  "timestamp": "2026-06-15T16:24:52Z",
+                  "status": 404,
+                  "error": "Not Found",
+                  "message": "The requested recipe with the given ID could not be found.",
+                  "path": "/api/v1/recipes/123"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "not found",
+            "content": {
+              "*/*": {
+                "example": {
+                  "timestamp": "2026-06-15T16:24:52Z",
+                  "status": 500,
+                  "error": "Internal Server Error",
+                  "message": "An unexpected error occurred while processing the recipe request.",
+                  "path": "/api/v1/recipes/123"
                 }
               }
             }
@@ -91,12 +127,30 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK",
+          "404": {
+            "description": "not found",
             "content": {
               "*/*": {
-                "schema": {
-                  "type": "string"
+                "example": {
+                  "timestamp": "2026-06-15T16:24:52Z",
+                  "status": 404,
+                  "error": "Not Found",
+                  "message": "The requested recipe with the given ID could not be found.",
+                  "path": "/api/v1/recipes/123"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "not found",
+            "content": {
+              "*/*": {
+                "example": {
+                  "timestamp": "2026-06-15T16:24:52Z",
+                  "status": 500,
+                  "error": "Internal Server Error",
+                  "message": "An unexpected error occurred while processing the recipe request.",
+                  "path": "/api/v1/recipes/123"
                 }
               }
             }
@@ -131,12 +185,30 @@
           "required": true
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "404": {
+            "description": "not found",
             "content": {
               "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/Recipe"
+                "example": {
+                  "timestamp": "2026-06-15T16:24:52Z",
+                  "status": 404,
+                  "error": "Not Found",
+                  "message": "The requested recipe with the given ID could not be found.",
+                  "path": "/api/v1/recipes/123"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "not found",
+            "content": {
+              "*/*": {
+                "example": {
+                  "timestamp": "2026-06-15T16:24:52Z",
+                  "status": 500,
+                  "error": "Internal Server Error",
+                  "message": "An unexpected error occurred while processing the recipe request.",
+                  "path": "/api/v1/recipes/123"
                 }
               }
             }
@@ -152,15 +224,30 @@
         "summary": "Get all the master ingredients available",
         "operationId": "getAllMasterIngredients",
         "responses": {
-          "200": {
-            "description": "OK",
+          "404": {
+            "description": "not found",
             "content": {
               "*/*": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                "example": {
+                  "timestamp": "2026-06-15T16:24:52Z",
+                  "status": 404,
+                  "error": "Not Found",
+                  "message": "The requested recipe with the given ID could not be found.",
+                  "path": "/api/v1/recipes/123"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "not found",
+            "content": {
+              "*/*": {
+                "example": {
+                  "timestamp": "2026-06-15T16:24:52Z",
+                  "status": 500,
+                  "error": "Internal Server Error",
+                  "message": "An unexpected error occurred while processing the recipe request.",
+                  "path": "/api/v1/recipes/123"
                 }
               }
             }
@@ -186,16 +273,30 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK",
+          "404": {
+            "description": "not found",
             "content": {
               "*/*": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "integer",
-                    "format": "int64"
-                  }
+                "example": {
+                  "timestamp": "2026-06-15T16:24:52Z",
+                  "status": 404,
+                  "error": "Not Found",
+                  "message": "The requested recipe with the given ID could not be found.",
+                  "path": "/api/v1/recipes/123"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "not found",
+            "content": {
+              "*/*": {
+                "example": {
+                  "timestamp": "2026-06-15T16:24:52Z",
+                  "status": 500,
+                  "error": "Internal Server Error",
+                  "message": "An unexpected error occurred while processing the recipe request.",
+                  "path": "/api/v1/recipes/123"
                 }
               }
             }
@@ -211,15 +312,30 @@
         "summary": "Get all recipes",
         "operationId": "getAllRecipes",
         "responses": {
-          "200": {
-            "description": "OK",
+          "404": {
+            "description": "not found",
             "content": {
               "*/*": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Recipe"
-                  }
+                "example": {
+                  "timestamp": "2026-06-15T16:24:52Z",
+                  "status": 404,
+                  "error": "Not Found",
+                  "message": "The requested recipe with the given ID could not be found.",
+                  "path": "/api/v1/recipes/123"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "not found",
+            "content": {
+              "*/*": {
+                "example": {
+                  "timestamp": "2026-06-15T16:24:52Z",
+                  "status": 500,
+                  "error": "Internal Server Error",
+                  "message": "An unexpected error occurred while processing the recipe request.",
+                  "path": "/api/v1/recipes/123"
                 }
               }
             }
@@ -278,10 +394,10 @@
             "type": "string"
           },
           "ingredients": {
+            "type": "array",
             "items": {
               "$ref": "#/components/schemas/Ingredient"
-            },
-            "type": "array"
+            }
           }
         }
       }

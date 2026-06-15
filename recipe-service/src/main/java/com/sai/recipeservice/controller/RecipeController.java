@@ -2,6 +2,9 @@ package com.sai.recipeservice.controller;
 
 import com.sai.recipeservice.entity.Recipe;
 import com.sai.recipeservice.service.RecipeService;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,8 +12,13 @@ import io.swagger.v3.oas.annotations.Operation;
 
 import java.util.List;
 
+import static com.sai.recipeservice.exception.SwaggerConstants.RECIPE404;
+import static com.sai.recipeservice.exception.SwaggerConstants.RECIPE500;
+
 @RestController
 @RequestMapping("/api/recipes")
+@ApiResponse(responseCode = "404",description = "not found", content = @Content(examples=@ExampleObject(value=RECIPE404)))
+@ApiResponse(responseCode = "500",description = "not found", content =@Content(examples=@ExampleObject(value=RECIPE500)))
 public class RecipeController {
 
     @Autowired
