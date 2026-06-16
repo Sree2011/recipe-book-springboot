@@ -3,6 +3,7 @@ package com.sai.recipeservice.repository;
 
 import com.sai.recipeservice.entity.Recipe;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -22,5 +23,8 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface RecipeRepository extends JpaRepository<Recipe, Long> {
+
+    @Query("SELECT r FROM Recipe r JOIN FETCH r.ingredients i JOIN FETCH i.foodCalories WHERE r.id = :id")
+    Recipe findRecipeWithNutrition(Long id);
 }
 

@@ -29,7 +29,7 @@ public class Recipe {
      * The auto-incremented primary key identifier for the recipe entity record.
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     /**
