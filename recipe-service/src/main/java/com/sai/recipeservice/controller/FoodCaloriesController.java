@@ -63,7 +63,7 @@ public class FoodCaloriesController {
 
     @GetMapping("/recipe/{id}/nutrition")
     @Operation(summary = "Get the nutrition facts of a recipe")
-    public Map<String, Double> getRecipeNutrition(@PathVariable Long id) {
+    public Map<String, String> getRecipeNutrition(@PathVariable Long id) {
         return service.getRecipeNutrition(id);
     }
 

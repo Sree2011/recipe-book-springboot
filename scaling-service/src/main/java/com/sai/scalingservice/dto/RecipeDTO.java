@@ -1,5 +1,5 @@
 package com.sai.scalingservice.dto;
-import jakarta.persistence.*;
+
 import lombok.*;
 
 import java.util.List;

@@ -51,7 +51,7 @@ public class FoodCalorieService {
         return "deleted";
     }
         // New method: aggregate nutrition for a recipe
-        public Map<String, Double> getRecipeNutrition(Long recipeId) {
+        public Map<String, String> getRecipeNutrition(Long recipeId) {
             Recipe recipe = recipeRepo.findRecipeWithNutrition(recipeId);
 
             double totalCalories = 0.0;
@@ -69,11 +69,12 @@ public class FoodCalorieService {
                 }
             }
 
-            Map<String, Double> totals = new HashMap<>();
-            totals.put("calories", totalCalories);
-            totals.put("protein", totalProtein);
-            totals.put("carbs", totalCarbs);
-            totals.put("fat", totalFat);
+            Map<String, String> totals = new HashMap<>();
+            totals.put("name",recipe.getName());
+            totals.put("calories", String.valueOf(totalCalories));
+            totals.put("protein", String.valueOf(totalProtein));
+            totals.put("carbs", String.valueOf(totalCarbs));
+            totals.put("fat", String.valueOf(totalFat));
 
             return totals;
         }
