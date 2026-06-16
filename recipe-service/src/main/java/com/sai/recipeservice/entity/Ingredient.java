@@ -69,6 +69,14 @@ public class Ingredient {
     @JsonBackReference
     private Recipe recipe;
 
+
+
+    // Link to FoodCalories by ingredient_name
+    // Foreign key to FoodCalories
+    @ManyToOne
+    @JoinColumn(name = "food_id", referencedColumnName = "food_id")
+    private FoodCalories foodCalories;
+
     /**
      * Overloaded stateful constructor used to initialize a new transient or detached 
      * ingredient relationship item wrapper without mapping database key parameters.

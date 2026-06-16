@@ -1,18 +1,25 @@
 package com.sai.recipeservice.service;
 
 import com.sai.recipeservice.entity.FoodCalories;
+import com.sai.recipeservice.entity.Ingredient;
+import com.sai.recipeservice.entity.Recipe;
 import com.sai.recipeservice.repository.FoodCaloriesRepository;
+import com.sai.recipeservice.repository.RecipeRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
 public class FoodCalorieService {
 
     private final FoodCaloriesRepository repository;
-
-    public FoodCalorieService(FoodCaloriesRepository repository) {
+    private final RecipeRepository recipeRepo;
+    public FoodCalorieService(FoodCaloriesRepository repository, RecipeRepository recipeRepo) {
         this.repository = repository;
+        this.recipeRepo = recipeRepo;
     }
 
     public Optional<FoodCalories> getByName(String foodName) {
@@ -43,5 +50,67 @@ public class FoodCalorieService {
         repository.deleteById(id);
         return "deleted";
     }
-}
+        // New method: aggregate nutrition for a recipe
+        public Map<String, Double> getRecipeNutrition(Long recipeId) {
+            Recipe recipe = recipeRepo.findRecipeWithNutrition(recipeId);
+
+            double totalCalories = 0.0;
+            double totalProtein = 0.0;
+            double totalCarbs = 0.0;
+            double totalFat = 0.0;
+
+            for (Ingredient ing : recipe.getIngredients()) {
+                FoodCalories fc = ing.getFoodCalories();
+                if (fc != null) {
+                    totalCalories += fc.getCalories() != null ? fc.getCalories() : 0;
+                    totalProtein += fc.getProtein() != null ? fc.getProtein() : 0;
+                    totalCarbs   += fc.getCarbs()   != null ? fc.getCarbs()   : 0;
+                    totalFat     += fc.getFat()     != null ? fc.getFat()     : 0;
+                }
+            }
+
+            Map<String, Double> totals = new HashMap<>();
+            totals.put("calories", totalCalories);
+            totals.put("protein", totalProtein);
+            totals.put("carbs", totalCarbs);
+            totals.put("fat", totalFat);
+
+            return totals;
+        }
+
+    public Map<String, String> requiredCalories(Double height, Double weight, Double age, String activity) {
+        Double BMR = (10 * weight) + (6.25 * height) - (5 * age) - 161;
+        Double Tdee = 0.0;
+        if (activity.equalsIgnoreCase("sedentary")) {
+            Tdee = BMR * 1.2;
+        } else if (activity.equalsIgnoreCase("Lightly Active")) {
+            Tdee = BMR * 1.375;
+
+        } else if (activity.equalsIgnoreCase("Moderately Active")) {
+            Tdee = BMR * 1.55;
+        } else if (activity.equalsIgnoreCase("very active")) {
+            Tdee = BMR * 1.725;
+        } else if (activity.equalsIgnoreCase("hard exercise")) {
+            Tdee = BMR * 1.9;
+        }
+
+        Map<String, String> result = new HashMap<>();
+        result.put("loss", (Tdee - 500) + " - " + (Tdee - 300));
+        result.put("gain", (Tdee + 300) + " - " + (Tdee + 500));
+
+        return result;
+
+    }
+
+
+
+
+
+
+
+
+
+    }
+
+
 

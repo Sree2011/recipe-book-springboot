@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
         import io.swagger.v3.oas.annotations.Operation;
 
 import java.util.List;
+import java.util.Map;
 
 import static com.sai.recipeservice.exception.SwaggerConstants.*;
 
@@ -134,15 +135,15 @@ public class RecipeController {
      * </p>
      *
      * @param id the unique database {@code Long} ID of the recipe to modify
-     * @param recipeu the incoming recipe data structure carrying the updated field mutations
+     * @param recipe the incoming recipe data structure carrying the updated field mutations
      * @return a {@code ResponseEntity} wrapping the updated, managed {@code Recipe} entity instance 
      * and an HTTP status of {@code 200 OK}
      */
     @PatchMapping("/{id}")
     @Operation(summary = "Update a recipe")
     @ApiResponse(responseCode = "200",description = "All Recipes returned", content =@Content(examples=@ExampleObject(value=RECIPE200)))
-    public ResponseEntity<Recipe> updateRecipeById(@PathVariable Long id, @RequestBody Recipe recipeu){
-        Recipe r = service.updateRecipe(id,recipeu);
+    public ResponseEntity<Recipe> updateRecipeById(@PathVariable Long id, @RequestBody Recipe recipe){
+        Recipe r = service.updateRecipe(id,recipe);
         return ResponseEntity.ok(r);
     }
 
@@ -160,4 +161,6 @@ public class RecipeController {
         List<String> master = service.getAllMasterIngredients();
         return ResponseEntity.ok(master);
     }
+
+
 }

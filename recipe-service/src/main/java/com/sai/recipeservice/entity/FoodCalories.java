@@ -15,6 +15,7 @@ public class FoodCalories {
 
 
     @Id
+    @Column(name="food_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

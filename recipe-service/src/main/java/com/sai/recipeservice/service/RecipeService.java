@@ -10,9 +10,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -97,7 +95,7 @@ public class RecipeService {
     }
 
     public List<String> getAllMasterIngredients() {
-        List<MasterIngredient> master =  masterRepo.findAll();
+        List<MasterIngredient> master = masterRepo.findAll();
         List<String> names = new ArrayList<>();
         for (MasterIngredient m : master) {
             names.add(m.getName());
@@ -106,59 +104,72 @@ public class RecipeService {
 
     }
 
-        public Recipe updateRecipe(Long id, Recipe updatedRecipeDto) {
-            return repository.findById(id)
-                    .map(existingRecipe -> {
-                        // Update basic fields if provided
-                        if (updatedRecipeDto.getName() != null && !updatedRecipeDto.getName().isBlank()) {
-                            existingRecipe.setName(updatedRecipeDto.getName());
-                        }
-                        if (updatedRecipeDto.getServings() != null) {
-                            existingRecipe.setServings(updatedRecipeDto.getServings());
-                        }
-                        if (updatedRecipeDto.getInstructions() != null && !updatedRecipeDto.getInstructions().isBlank()) {
-                            existingRecipe.setInstructions(updatedRecipeDto.getInstructions());
-                        }
+    public Recipe updateRecipe(Long id, Recipe updatedRecipeDto) {
+        return repository.findById(id)
+                .map(existingRecipe -> {
+                    // Update basic fields if provided
+                    if (updatedRecipeDto.getName() != null && !updatedRecipeDto.getName().isBlank()) {
+                        existingRecipe.setName(updatedRecipeDto.getName());
+                    }
+                    if (updatedRecipeDto.getServings() != null) {
+                        existingRecipe.setServings(updatedRecipeDto.getServings());
+                    }
+                    if (updatedRecipeDto.getInstructions() != null && !updatedRecipeDto.getInstructions().isBlank()) {
+                        existingRecipe.setInstructions(updatedRecipeDto.getInstructions());
+                    }
 
-                        // ✅ Mutate the existing list instead of replacing it
-                        List<Ingredient> ingredients = existingRecipe.getIngredients();
+                    // ✅ Mutate the existing list instead of replacing it
+                    List<Ingredient> ingredients = existingRecipe.getIngredients();
 
-                        if (updatedRecipeDto.getIngredients() != null && !updatedRecipeDto.getIngredients().isEmpty()) {
-                            for (Ingredient ingDto : updatedRecipeDto.getIngredients()) {
-                                // Ensure master ingredient exists
-                                MasterIngredient master = masterRepo
-                                        .findByName(ingDto.getMasterIngredient().getName())
-                                        .orElseGet(() -> masterRepo.save(
-                                                new MasterIngredient(ingDto.getMasterIngredient().getName())
-                                        ));
+                    if (updatedRecipeDto.getIngredients() != null && !updatedRecipeDto.getIngredients().isEmpty()) {
+                        for (Ingredient ingDto : updatedRecipeDto.getIngredients()) {
+                            // Ensure master ingredient exists
+                            MasterIngredient master = masterRepo
+                                    .findByName(ingDto.getMasterIngredient().getName())
+                                    .orElseGet(() -> masterRepo.save(
+                                            new MasterIngredient(ingDto.getMasterIngredient().getName())
+                                    ));
 
-                                // Check if ingredient already exists in recipe
-                                Optional<Ingredient> existingIngOpt = ingredients.stream()
-                                        .filter(e -> e.getMasterIngredient().getName().equalsIgnoreCase(master.getName()))
-                                        .findFirst();
+                            // Check if ingredient already exists in recipe
+                            Optional<Ingredient> existingIngOpt = ingredients.stream()
+                                    .filter(e -> e.getMasterIngredient().getName().equalsIgnoreCase(master.getName()))
+                                    .findFirst();
 
-                                if (existingIngOpt.isPresent()) {
-                                    // Update existing ingredient
-                                    Ingredient existingIng = existingIngOpt.get();
-                                    if (ingDto.getQuantity() != null) existingIng.setQuantity(ingDto.getQuantity());
-                                    if (ingDto.getUnit() != null) existingIng.setUnit(ingDto.getUnit());
-                                } else {
-                                    // Add new ingredient
-                                    Ingredient newIng = new Ingredient();
-                                    newIng.setMasterIngredient(master);
-                                    newIng.setQuantity(ingDto.getQuantity());
-                                    newIng.setUnit(ingDto.getUnit());
-                                    newIng.setRecipe(existingRecipe); // maintain bidirectional link
-                                    ingredients.add(newIng);
-                                }
+                            if (existingIngOpt.isPresent()) {
+                                // Update existing ingredient
+                                Ingredient existingIng = existingIngOpt.get();
+                                if (ingDto.getQuantity() != null) existingIng.setQuantity(ingDto.getQuantity());
+                                if (ingDto.getUnit() != null) existingIng.setUnit(ingDto.getUnit());
+                            } else {
+                                // Add new ingredient
+                                Ingredient newIng = new Ingredient();
+                                newIng.setMasterIngredient(master);
+                                newIng.setQuantity(ingDto.getQuantity());
+                                newIng.setUnit(ingDto.getUnit());
+                                newIng.setRecipe(existingRecipe); // maintain bidirectional link
+                                ingredients.add(newIng);
                             }
                         }
+                    }
 
-                        return repository.save(existingRecipe);
-                    })
-                    .orElseThrow(() -> new RecipeNotFoundException(id));
-        }
+                    return repository.save(existingRecipe);
+                })
+                .orElseThrow(() -> new RecipeNotFoundException(id));
     }
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+
 
 
 
