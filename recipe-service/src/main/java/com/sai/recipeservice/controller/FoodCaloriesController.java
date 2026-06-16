@@ -67,15 +67,7 @@ public class FoodCaloriesController {
         return service.getRecipeNutrition(id);
     }
 
-    @GetMapping("/required-calories")
-    @Operation(summary = "calculate required calories based on height, weight, age and activity")
-    public Map<String, String> requiredCalories(
-            @RequestParam Double height,
-            @RequestParam Double weight,
-            @RequestParam Double age,
-            @RequestParam String activity){
-        return service.requiredCalories(height, weight, age, activity);
-    }
+
 
 
 

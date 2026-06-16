@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/scale")
 @RequiredArgsConstructor
@@ -27,4 +29,16 @@ public class ScalingController {
         RecipeDTO scaledRecipe = scalingService.getScaledRecipe(id, targetPortions);
         return ResponseEntity.ok(scaledRecipe);
     }
+
+    @GetMapping("/required-calories")
+    @Operation(summary = "calculate required calories based on height, weight, age and activity")
+    public Map<String, String> requiredCalories(
+            @RequestParam Double height,
+            @RequestParam Double weight,
+            @RequestParam Double age,
+            @RequestParam String activity){
+        return scalingService.requiredCalories(height, weight, age, activity);
+    }
+
+
 }

@@ -17,7 +17,8 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-gateway-server-webflux</artifactId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
+            <version>4.2.2</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>

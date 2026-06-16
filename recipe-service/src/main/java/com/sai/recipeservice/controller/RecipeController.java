@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
         import io.swagger.v3.oas.annotations.Operation;
 
 import java.util.List;
-import java.util.Map;
+
 
 import static com.sai.recipeservice.exception.SwaggerConstants.*;
 
@@ -161,6 +161,12 @@ public class RecipeController {
         List<String> master = service.getAllMasterIngredients();
         return ResponseEntity.ok(master);
     }
+
+    @GetMapping("/ping")
+    public String ping() {
+        return "recipe-service alive!";
+    }
+
 
 
 }

@@ -78,29 +78,6 @@ public class FoodCalorieService {
             return totals;
         }
 
-    public Map<String, String> requiredCalories(Double height, Double weight, Double age, String activity) {
-        Double BMR = (10 * weight) + (6.25 * height) - (5 * age) - 161;
-        Double Tdee = 0.0;
-        if (activity.equalsIgnoreCase("sedentary")) {
-            Tdee = BMR * 1.2;
-        } else if (activity.equalsIgnoreCase("Lightly Active")) {
-            Tdee = BMR * 1.375;
-
-        } else if (activity.equalsIgnoreCase("Moderately Active")) {
-            Tdee = BMR * 1.55;
-        } else if (activity.equalsIgnoreCase("very active")) {
-            Tdee = BMR * 1.725;
-        } else if (activity.equalsIgnoreCase("hard exercise")) {
-            Tdee = BMR * 1.9;
-        }
-
-        Map<String, String> result = new HashMap<>();
-        result.put("loss", (Tdee - 500) + " - " + (Tdee - 300));
-        result.put("gain", (Tdee + 300) + " - " + (Tdee + 500));
-
-        return result;
-
-    }
 
 
 
