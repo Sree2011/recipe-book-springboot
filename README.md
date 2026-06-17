@@ -94,8 +94,8 @@ erDiagram
 
 ### 📑 API & System Interactive References
 
-* 🌐 **Production Javadoc Site Engine:** [Static Javadoc Panels](https://www.google.com/search?q=./javadoc/index.html)
-* 📖 **OpenAPI Global Redocly Spec:** [API JSON Contract Matrix](https://www.google.com/search?q=./api.html)
+* 🌐 **Production Javadoc Site Engine:** [Static Javadoc Panels](./javadoc/index.html)
+* 📖 **OpenAPI Global Redocly Spec:** [API JSON Contract Matrix](./api.html)
 * 🛡️ **Centralized Exception Handler:** Active catch-all global adapter mapping errors seamlessly down to clean client JSON payload schemas.
 
 ### 🔌 Backend Route Matrix
